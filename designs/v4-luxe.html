@@ -1,0 +1,177 @@
+<!doctype html>
+<!-- PLACEHOLDER content: names real; date/venue/photos/copy are placeholders for Phase 2. -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gabrielle & Ernesto — V4 Dramatic Luxe</title>
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --burgundy:#42171d;--burgundy-deep:#22090d;--burgundy-soft:#552029;
+    --cream:#efe6d6;--cream-deep:#cdbfa3;--ink:#2a1a1c;
+    --gold:#d9b25f;--gold-lite:#f4e3b0;--bg:#150a0c;--text:#ece1cf;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:"Cormorant Garamond",Georgia,serif;color:var(--text);background:var(--bg);
+    -webkit-font-smoothing:antialiased;line-height:1.65;font-size:1.06rem}
+  ::selection{background:var(--gold);color:var(--bg)}
+  .gold{background:linear-gradient(92deg,var(--gold),var(--gold-lite) 45%,var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .label{font-family:"Cinzel",serif;text-transform:uppercase;letter-spacing:.34em;font-size:.64rem}
+  .grain{position:fixed;inset:0;z-index:80;pointer-events:none;opacity:.05;mix-blend-mode:overlay;
+    background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+  .scene{position:fixed;inset:0;z-index:50;display:grid;place-items:center;
+    background:radial-gradient(58% 50% at 50% 44%,#3a151b 0%,#1d0a0e 48%,#0c0406 100%);
+    transition:opacity 1.3s ease,visibility 1.3s}
+  body.revealed .scene{opacity:0;visibility:hidden}
+  .glow{position:absolute;width:520px;height:520px;border-radius:50%;z-index:0;
+    background:radial-gradient(circle,rgba(217,178,95,.22),transparent 60%);filter:blur(8px)}
+  .env{position:relative;width:min(82vw,400px);aspect-ratio:3/2;cursor:pointer;perspective:1700px;z-index:1}
+  .env-back{position:absolute;inset:0;border-radius:5px;z-index:1;
+    background:linear-gradient(160deg,var(--burgundy-soft),var(--burgundy-deep));
+    box-shadow:0 30px 60px rgba(0,0,0,.6),0 0 0 1px rgba(217,178,95,.35)}
+  .liner{position:absolute;inset:0;border-radius:5px;z-index:2;background:linear-gradient(160deg,#241016,#160a0d);display:flex;justify-content:center;padding-top:6%}
+  .liner svg{width:34%;color:var(--gold);opacity:.6}
+  .card{position:absolute;left:7%;right:7%;top:4%;height:94%;z-index:3;background:linear-gradient(170deg,#fbf4e6,#efe4cf);
+    border-radius:3px;overflow:hidden;display:flex;align-items:flex-start;justify-content:center;box-shadow:0 0 0 1px var(--cream-deep);
+    transition:transform 1.25s cubic-bezier(.18,.7,.12,1) .65s,z-index 0s .65s,box-shadow .6s}
+  .scene.open .card{transform:translateY(-66%);z-index:7;box-shadow:0 40px 70px rgba(0,0,0,.6)}
+  .card::after{content:"";position:absolute;inset:8px;border:1px solid var(--gold);opacity:.55;pointer-events:none}
+  .card-in{padding:15% 9% 0;text-align:center}
+  .card-k{font-family:"Cinzel";text-transform:uppercase;letter-spacing:.36em;font-size:.56rem;color:#9a7330;margin-bottom:1em}
+  .card-n{font-family:"Cinzel";font-weight:500;font-size:1.35rem;color:var(--ink);line-height:1.35;letter-spacing:.02em}
+  .front{position:absolute;inset:0;border-radius:5px;z-index:4;
+    background:linear-gradient(150deg,var(--burgundy-soft),var(--burgundy-deep));clip-path:polygon(0 0,50% 50%,100% 0,100% 100%,0 100%);
+    box-shadow:inset 0 0 0 1px rgba(217,178,95,.2)}
+  .flap{position:absolute;top:0;left:0;right:0;height:50%;z-index:5;transform-origin:top center;
+    background:linear-gradient(180deg,var(--burgundy),var(--burgundy-deep));clip-path:polygon(0 0,100% 0,50% 100%);
+    backface-visibility:hidden;transition:transform 1s cubic-bezier(.55,.05,.25,1),z-index 0s .95s}
+  .scene.open .flap{transform:rotateX(180deg);z-index:1}
+  .seal{position:absolute;top:50%;left:50%;width:64px;height:64px;transform:translate(-50%,-50%);border-radius:50%;
+    background:radial-gradient(circle at 36% 30%,var(--gold-lite),var(--gold) 45%,#9a7330);
+    box-shadow:0 6px 16px rgba(0,0,0,.5),inset 0 0 0 2px rgba(255,255,255,.25);z-index:6;display:grid;place-items:center;
+    color:#5a3d12;font-family:"Cinzel";font-weight:600;font-size:.9rem;transition:opacity .4s,transform .55s}
+  .scene.open .seal{opacity:0;transform:translate(-50%,-50%) scale(.55)}
+  .prompt{position:absolute;bottom:11%;font-family:"Cinzel";text-transform:uppercase;letter-spacing:.42em;font-size:.66rem;
+    color:var(--gold);opacity:.8;animation:pulse 2.8s ease-in-out infinite}
+  .scene.open .prompt{opacity:0;transition:opacity .3s}
+  @keyframes pulse{50%{opacity:.3}}
+
+  .vignette{position:fixed;inset:0;z-index:5;pointer-events:none;background:radial-gradient(70% 60% at 50% 40%,transparent,rgba(0,0,0,.55))}
+  .wrap{max-width:1000px;margin:0 auto;padding:0 28px}
+  .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:120px 24px 80px;position:relative}
+  .hero .kick{color:var(--gold);margin-bottom:2rem;opacity:.9}
+  .hero h1{font-family:"Cinzel";font-weight:600;font-size:clamp(2.4rem,7.5vw,5.4rem);line-height:1.1;letter-spacing:.02em;
+    text-shadow:0 0 40px rgba(217,178,95,.35)}
+  .hero h1 .amp{display:block;font-size:.5em;margin:.2em 0;color:var(--gold)}
+  .rule{display:flex;align-items:center;gap:16px;margin:2rem 0}
+  .rule::before,.rule::after{content:"";height:1px;width:80px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+  .rule span{font-family:"Cinzel";font-size:.7rem;letter-spacing:.3em;color:var(--gold)}
+  .meta{font-size:1.2rem;letter-spacing:.18em;color:var(--text)}
+  section{padding:96px 0;border-top:1px solid rgba(217,178,95,.16)}
+  .eyebrow{color:var(--gold);text-align:center;margin-bottom:1rem}
+  .sect-title{font-family:"Cinzel";font-weight:500;font-size:clamp(1.8rem,5vw,3rem);text-align:center;margin-bottom:2rem;
+    text-shadow:0 0 30px rgba(217,178,95,.25)}
+  .welcome p{max-width:620px;margin:0 auto;text-align:center;font-size:1.2rem;color:#d4c6ad}
+  .photos{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:2.2rem}
+  .photo{background:linear-gradient(160deg,#2a1518,#1a0d10);aspect-ratio:4/5;border:1px solid rgba(217,178,95,.25);
+    display:grid;place-items:center;color:#8a6f3e;font-family:"Cinzel";letter-spacing:.26em;text-transform:uppercase;font-size:.56rem}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:1rem}
+  .day{text-align:center;padding:36px 20px;background:linear-gradient(160deg,#231014,#190c0f);border:1px solid rgba(217,178,95,.2)}
+  .day .t{font-family:"Cinzel";font-size:1rem;color:var(--gold);letter-spacing:.1em;margin-bottom:.5rem}
+  .day h3{font-family:"Cinzel";font-weight:500;font-size:1.05rem;color:var(--text);margin-bottom:.6rem;letter-spacing:.04em}
+  .day p{font-size:1rem;color:#c4b596}
+  .rsvp{text-align:center}
+  .btn{display:inline-block;font-family:"Cinzel";text-transform:uppercase;letter-spacing:.28em;font-size:.74rem;color:var(--bg);
+    background:linear-gradient(92deg,var(--gold),var(--gold-lite),var(--gold));padding:18px 50px;text-decoration:none;
+    transition:.3s;box-shadow:0 0 30px rgba(217,178,95,.35)}
+  .btn:hover{box-shadow:0 0 46px rgba(217,178,95,.6)}
+  footer{text-align:center;padding:54px 0 86px;color:#8a7a5a;font-family:"Cinzel";letter-spacing:.2em;text-transform:uppercase;font-size:.6rem}
+  .nav{position:fixed;top:18px;left:20px;z-index:60;color:var(--gold);text-decoration:none;font-family:"Cinzel";text-transform:uppercase;
+    letter-spacing:.2em;font-size:.6rem;opacity:0;transition:opacity .6s ease .6s}
+  body.revealed .nav{opacity:1}
+  .skip{position:fixed;top:18px;right:22px;z-index:70;font-family:"Cinzel";letter-spacing:.2em;text-transform:uppercase;font-size:.58rem;
+    color:var(--gold);background:none;border:none;cursor:pointer;opacity:.8}
+  body.revealed .skip{display:none}
+  @media(max-width:700px){.grid3,.photos{grid-template-columns:1fr}}
+  @media (prefers-reduced-motion:reduce){.flap,.card,.scene,.seal{transition:none!important}}
+</style>
+</head>
+<body>
+  <svg width="0" height="0" style="position:absolute"><symbol id="cherub" viewBox="0 0 120 82">
+    <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M57 39C42 17 16 16 8 34c14-5 31-2 45 12"/><path d="M63 39C78 17 104 16 112 34c-14-5-31-2-45 12"/>
+      <path d="M60 70C49 57 39 53 39 44c0-6 6-9 11-6 4 2 10 9 10 9s6-7 10-9c5-3 11 0 11 6 0 9-10 13-21 26Z"/><circle cx="60" cy="20" r="3"/>
+    </g></symbol></svg>
+  <div class="grain"></div>
+
+  <button class="skip" onclick="document.body.classList.add('revealed')">Skip</button>
+  <div class="scene" id="scene">
+    <div class="glow"></div>
+    <div class="env" id="env" role="button" tabindex="0" aria-label="Open the wedding invitation">
+      <div class="env-back"></div>
+      <div class="liner"><svg><use href="#cherub"/></svg></div>
+      <div class="card"><div class="card-in">
+        <p class="card-k">You are invited</p>
+        <p class="card-n">Gabrielle<br>&amp;<br>Ernesto</p>
+      </div></div>
+      <div class="front"></div>
+      <div class="flap"></div>
+      <div class="seal">G&amp;E</div>
+    </div>
+    <p class="prompt">Click to open</p>
+  </div>
+
+  <a href="index.html" class="nav">← All designs</a>
+  <div class="vignette"></div>
+
+  <main>
+    <header class="hero">
+      <p class="kick label">Together with their families</p>
+      <h1>Gabrielle<span class="amp">&amp;</span>Ernesto</h1>
+      <div class="rule"><span>XIII . III . MMXXVII</span></div>
+      <p class="meta">Lagos de Moreno, Mexico</p>
+    </header>
+
+    <section class="welcome"><div class="wrap">
+      <p class="eyebrow label">Our Story</p>
+      <h2 class="sect-title gold">A Love Worth Celebrating</h2>
+      <p>It began on a chilly autumn evening at their local wine bar — a chance encounter that became
+      a love that feels like home. Now, beneath the open sky, they invite you to an evening of
+      candlelight, music, and celebration as they begin forever.</p>
+      <div class="photos"><div class="photo">Your photo</div><div class="photo">Your photo</div><div class="photo">Your photo</div></div>
+    </div></section>
+
+    <section><div class="wrap">
+      <p class="eyebrow label">The Weekend</p>
+      <h2 class="sect-title gold">The Celebration</h2>
+      <div class="grid3">
+        <div class="day"><div class="t">Friday</div><h3>Welcome Dinner</h3><p>An evening of feasting to begin.</p></div>
+        <div class="day"><div class="t">Saturday</div><h3>The Wedding</h3><p>Ceremony, dinner & dancing under the stars.</p></div>
+        <div class="day"><div class="t">Sunday</div><h3>Farewell Brunch</h3><p>A relaxed send-off before home.</p></div>
+      </div>
+    </div></section>
+
+    <section class="rsvp"><div class="wrap">
+      <p class="eyebrow label">We hope you'll join us</p>
+      <h2 class="sect-title gold">Kindly Respond</h2>
+      <a class="btn" href="#">RSVP</a>
+    </div></section>
+
+    <footer>Gabrielle &amp; Ernesto · March 13, 2027 · Lagos de Moreno, Mexico</footer>
+  </main>
+<script>
+  (function(){var s=document.getElementById('scene'),e=document.getElementById('env'),o=false;
+   var r=matchMedia('(prefers-reduced-motion: reduce)').matches;
+   function op(){if(o)return;o=true;if(r){document.body.classList.add('revealed');return;}
+     s.classList.add('open');setTimeout(function(){document.body.classList.add('revealed');},2900);}
+   e.addEventListener('click',op);e.addEventListener('keydown',function(ev){if(ev.key==='Enter'||ev.key===' '){ev.preventDefault();op();}});})();
+</script>
+</body>
+</html>

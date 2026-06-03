@@ -1,0 +1,197 @@
+<!doctype html>
+<!-- PLACEHOLDER content: names real; date/venue/photos/copy are placeholders for Phase 2. -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gabrielle & Ernesto — V5 Whimsical</title>
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Cormorant+Garamond:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --burgundy:#8a1c2c;--burgundy-deep:#6d1422;--burgundy-soft:#ab3a48;
+    --cream:#fcf4ec;--cream-deep:#f2dfd3;--ink:#3c222a;--gold:#e3b765;--blush:#ecc0b6;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:"Cormorant Garamond",Georgia,serif;color:var(--ink);background:var(--cream);
+    -webkit-font-smoothing:antialiased;line-height:1.6;font-size:1.05rem;overflow-x:hidden}
+  ::selection{background:var(--blush);color:var(--burgundy)}
+  .label{font-family:"Fraunces";text-transform:uppercase;letter-spacing:.28em;font-size:.66rem;font-weight:500}
+
+  .scene{position:fixed;inset:0;z-index:50;display:grid;place-items:center;overflow:hidden;
+    background:
+      radial-gradient(50% 40% at 20% 16%,rgba(236,192,182,.6),transparent 60%),
+      radial-gradient(46% 38% at 84% 80%,rgba(227,183,101,.34),transparent 60%),
+      var(--cream);
+    transition:opacity 1s ease,visibility 1s}
+  body.revealed .scene{opacity:0;visibility:hidden}
+  .fly{position:absolute;color:var(--burgundy-soft);opacity:.55;animation:bob 5s ease-in-out infinite}
+  .fly.a{top:16%;left:16%;width:64px;animation-delay:0s}
+  .fly.b{top:24%;right:14%;width:52px;color:var(--gold);opacity:.7;animation-delay:-1.6s}
+  .fly.c{bottom:18%;left:22%;width:46px;color:var(--blush);opacity:.9;animation-delay:-3s}
+  .fly.d{bottom:24%;right:20%;width:60px;animation-delay:-2.2s}
+  @keyframes bob{0%,100%{transform:translateY(0) rotate(-4deg)}50%{transform:translateY(-16px) rotate(4deg)}}
+
+  .env{position:relative;width:min(82vw,400px);aspect-ratio:3/2;cursor:pointer;perspective:1600px;z-index:2}
+  .env-back{position:absolute;inset:0;border-radius:10px;z-index:1;
+    background:linear-gradient(160deg,var(--burgundy-soft),var(--burgundy-deep));box-shadow:0 26px 44px rgba(109,20,34,.28)}
+  .liner{position:absolute;inset:0;border-radius:10px;z-index:2;background:var(--cream);display:flex;justify-content:center;padding-top:6%}
+  .liner svg{width:36%;color:var(--blush);opacity:.85}
+  .card{position:absolute;left:7%;right:7%;top:4%;height:94%;z-index:3;background:#fffaf4;border:1px solid var(--cream-deep);border-radius:8px;
+    overflow:hidden;display:flex;align-items:flex-start;justify-content:center;
+    transition:transform 1.15s cubic-bezier(.34,1.4,.5,1) .5s,z-index 0s .5s,box-shadow .5s}
+  .scene.open .card{transform:translateY(-66%);z-index:7;box-shadow:0 28px 54px rgba(109,20,34,.3)}
+  .card-in{padding:13% 9% 0;text-align:center}
+  .card-k{font-family:"Fraunces";text-transform:uppercase;letter-spacing:.26em;font-size:.56rem;color:var(--burgundy-soft);margin-bottom:.2em}
+  .card-n{font-family:"Pinyon Script";font-size:2.3rem;color:var(--burgundy);line-height:1}
+  .front{position:absolute;inset:0;border-radius:10px;z-index:4;
+    background:linear-gradient(150deg,var(--burgundy-soft),var(--burgundy));clip-path:polygon(0 0,50% 50%,100% 0,100% 100%,0 100%)}
+  .flap{position:absolute;top:0;left:0;right:0;height:50%;z-index:5;transform-origin:top center;
+    background:linear-gradient(180deg,var(--burgundy),var(--burgundy-deep));clip-path:polygon(0 0,100% 0,50% 100%);
+    backface-visibility:hidden;transition:transform .8s cubic-bezier(.34,1.56,.5,1),z-index 0s .75s}
+  .scene.open .flap{transform:rotateX(180deg);z-index:1}
+  .seal{position:absolute;top:50%;left:50%;width:60px;height:60px;transform:translate(-50%,-50%);border-radius:50%;
+    background:radial-gradient(circle at 36% 30%,var(--gold),#c79541);box-shadow:0 6px 14px rgba(109,20,34,.3),inset 0 0 0 2px rgba(255,255,255,.3);
+    z-index:6;display:grid;place-items:center;color:#7a4e12;font-family:"Pinyon Script";font-size:1.7rem;transition:opacity .3s,transform .5s}
+  .scene.open .seal{opacity:0;transform:translate(-50%,-50%) scale(.5) rotate(20deg)}
+  .prompt{position:absolute;bottom:11%;font-family:"Fraunces";text-transform:uppercase;letter-spacing:.3em;font-size:.66rem;
+    color:var(--burgundy-soft);opacity:.82;animation:pulse 2.2s ease-in-out infinite}
+  .scene.open .prompt{opacity:0;transition:opacity .3s}
+  @keyframes pulse{50%{opacity:.35;transform:scale(1.04)}}
+  /* sparkle burst */
+  .spark{position:absolute;top:50%;left:50%;width:14px;height:14px;color:var(--gold);opacity:0;z-index:8}
+  .spark svg{width:100%;height:100%}
+  .scene.open .spark{animation:pop .9s ease-out forwards}
+  .spark.s1{--x:-120px;--y:-90px;animation-delay:.5s}
+  .spark.s2{--x:130px;--y:-70px;animation-delay:.6s;color:var(--blush)}
+  .spark.s3{--x:-90px;--y:60px;animation-delay:.7s;color:var(--burgundy-soft)}
+  .spark.s4{--x:110px;--y:80px;animation-delay:.55s}
+  .spark.s5{--x:0px;--y:-140px;animation-delay:.66s;color:var(--blush)}
+  .spark.s6{--x:-160px;--y:-10px;animation-delay:.72s;color:var(--gold)}
+  @keyframes pop{0%{opacity:0;transform:translate(-50%,-50%) scale(.2)}
+    40%{opacity:1}100%{opacity:0;transform:translate(calc(-50% + var(--x)),calc(-50% + var(--y))) scale(1.1) rotate(40deg)}}
+
+  .wrap{max-width:1000px;margin:0 auto;padding:0 28px}
+  .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+    padding:120px 24px 80px;position:relative;overflow:hidden}
+  .hero .fly{position:absolute}
+  .hero .kick{color:var(--burgundy-soft);margin-bottom:1.2rem}
+  .hero h1{font-family:"Pinyon Script";font-weight:400;color:var(--burgundy);font-size:clamp(3.6rem,12vw,7.6rem);line-height:.92}
+  .hero h1 .amp{color:var(--gold)}
+  .hero .date{font-family:"Fraunces";font-size:1.05rem;letter-spacing:.14em;margin-top:1.4rem;color:var(--ink);text-transform:uppercase}
+  .hero .date b{color:var(--burgundy-soft)}
+  .cherub-d{width:50px;color:var(--blush);margin:1.4rem auto 0;animation:bob 4s ease-in-out infinite}
+  section{padding:84px 0;position:relative}
+  .eyebrow{color:var(--burgundy-soft);text-align:center;margin-bottom:.7rem}
+  .sect-title{font-family:"Pinyon Script";font-size:clamp(2.6rem,7vw,4rem);text-align:center;color:var(--burgundy);margin-bottom:1.6rem;font-weight:400}
+  .welcome p{max-width:600px;margin:0 auto;text-align:center;font-size:1.2rem;color:#5e3942}
+  .photos{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:2rem}
+  .photo{background:linear-gradient(135deg,#f0d9cf,#ecc7bb);aspect-ratio:4/5;border-radius:14px;display:grid;place-items:center;
+    color:#c98f86;font-family:"Fraunces";letter-spacing:.24em;text-transform:uppercase;font-size:.56rem;transform:rotate(-2deg)}
+  .photo:nth-child(2){transform:rotate(1.5deg)}.photo:nth-child(3){transform:rotate(-1deg)}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:1rem}
+  .day{text-align:center;padding:34px 20px;background:#fff8f2;border:1px solid var(--cream-deep);border-radius:18px;transition:.3s}
+  .day:hover{transform:translateY(-6px) rotate(-1deg)}
+  .day svg{width:38px;color:var(--blush);margin-bottom:.5rem}
+  .day .t{font-family:"Pinyon Script";font-size:1.8rem;color:var(--burgundy);margin-bottom:.1rem}
+  .day h3{font-family:"Fraunces";text-transform:uppercase;letter-spacing:.2em;font-size:.64rem;color:var(--burgundy-soft);margin-bottom:.6rem}
+  .day p{font-size:1.02rem;color:#5e3942}
+  .rsvp{text-align:center}
+  .btn{display:inline-block;font-family:"Fraunces";text-transform:uppercase;letter-spacing:.22em;font-size:.74rem;color:#fff;
+    background:var(--burgundy);padding:18px 48px;border-radius:40px;text-decoration:none;transition:.3s;box-shadow:0 8px 0 var(--burgundy-deep)}
+  .btn:hover{transform:translateY(-3px);box-shadow:0 11px 0 var(--burgundy-deep)}
+  .btn:active{transform:translateY(3px);box-shadow:0 4px 0 var(--burgundy-deep)}
+  footer{text-align:center;padding:54px 0 86px;color:#a87c81;font-family:"Fraunces";letter-spacing:.18em;text-transform:uppercase;font-size:.6rem}
+  .nav{position:fixed;top:18px;left:20px;z-index:40;color:var(--burgundy-soft);text-decoration:none;background:rgba(252,244,236,.9);
+    padding:8px 14px;border-radius:20px;font-family:"Fraunces";text-transform:uppercase;letter-spacing:.16em;font-size:.6rem;opacity:0;transition:opacity .6s ease .6s}
+  body.revealed .nav{opacity:1}
+  .skip{position:fixed;top:18px;right:22px;z-index:60;font-family:"Fraunces";letter-spacing:.16em;text-transform:uppercase;font-size:.58rem;
+    color:var(--burgundy-soft);background:rgba(252,244,236,.85);border:none;border-radius:20px;padding:8px 14px;cursor:pointer}
+  body.revealed .skip{display:none}
+  @media(max-width:700px){.grid3,.photos{grid-template-columns:1fr}.fly{display:none}}
+  @media (prefers-reduced-motion:reduce){.flap,.card,.scene,.seal,.fly,.spark{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+  <svg width="0" height="0" style="position:absolute">
+    <symbol id="cherub" viewBox="0 0 120 82"><g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M57 39C42 17 16 16 8 34c14-5 31-2 45 12"/><path d="M63 39C78 17 104 16 112 34c-14-5-31-2-45 12"/>
+      <path d="M60 70C49 57 39 53 39 44c0-6 6-9 11-6 4 2 10 9 10 9s6-7 10-9c5-3 11 0 11 6 0 9-10 13-21 26Z"/><circle cx="60" cy="20" r="3"/></g></symbol>
+    <symbol id="star" viewBox="0 0 24 24"><path fill="currentColor" d="M12 0l2.6 8.4L23 11l-8.4 2.6L12 22l-2.6-8.4L1 11l8.4-2.6z"/></symbol>
+  </svg>
+
+  <button class="skip" onclick="document.body.classList.add('revealed')">Skip</button>
+  <div class="scene" id="scene">
+    <svg class="fly a"><use href="#cherub"/></svg>
+    <svg class="fly b"><use href="#cherub"/></svg>
+    <svg class="fly c"><use href="#cherub"/></svg>
+    <svg class="fly d"><use href="#cherub"/></svg>
+    <span class="spark s1"><svg><use href="#star"/></svg></span><span class="spark s2"><svg><use href="#star"/></svg></span>
+    <span class="spark s3"><svg><use href="#star"/></svg></span><span class="spark s4"><svg><use href="#star"/></svg></span>
+    <span class="spark s5"><svg><use href="#star"/></svg></span><span class="spark s6"><svg><use href="#star"/></svg></span>
+    <div class="env" id="env" role="button" tabindex="0" aria-label="Open the wedding invitation">
+      <div class="env-back"></div>
+      <div class="liner"><svg><use href="#cherub"/></svg></div>
+      <div class="card"><div class="card-in">
+        <p class="card-k">You're invited</p>
+        <p class="card-n">Gabrielle <span style="color:var(--gold)">&amp;</span> Ernesto</p>
+      </div></div>
+      <div class="front"></div>
+      <div class="flap"></div>
+      <div class="seal">G</div>
+    </div>
+    <p class="prompt">Click to open</p>
+  </div>
+
+  <a href="index.html" class="nav">← All designs</a>
+
+  <main>
+    <header class="hero">
+      <svg class="fly a"><use href="#cherub"/></svg>
+      <svg class="fly d"><use href="#cherub"/></svg>
+      <p class="kick label">Together with their families</p>
+      <h1>Gabrielle <span class="amp">&amp;</span> Ernesto</h1>
+      <p class="date"><b>March 13, 2027</b> · Lagos de Moreno, Mexico</p>
+      <svg class="cherub-d"><use href="#cherub"/></svg>
+    </header>
+
+    <section class="welcome"><div class="wrap">
+      <p class="eyebrow label">Our Story</p>
+      <h2 class="sect-title">How we met</h2>
+      <p>A chilly autumn evening, a local wine bar, a simple hello — and a love that feels like home.
+      From that first spark to now, it's been endless laughter and late-night talks. We can't wait to
+      celebrate with all the people who made us, us.</p>
+      <div class="photos"><div class="photo">Your photo</div><div class="photo">Your photo</div><div class="photo">Your photo</div></div>
+    </div></section>
+
+    <section><div class="wrap">
+      <p class="eyebrow label">The Weekend</p>
+      <h2 class="sect-title">The celebration</h2>
+      <div class="grid3">
+        <div class="day"><svg><use href="#cherub"/></svg><div class="t">Friday</div><h3>Welcome Dinner</h3><p>An evening of feasting to begin.</p></div>
+        <div class="day"><svg><use href="#cherub"/></svg><div class="t">Saturday</div><h3>The Wedding</h3><p>Ceremony, dinner & dancing under the stars.</p></div>
+        <div class="day"><svg><use href="#cherub"/></svg><div class="t">Sunday</div><h3>Farewell Brunch</h3><p>A relaxed send-off before home.</p></div>
+      </div>
+    </div></section>
+
+    <section class="rsvp"><div class="wrap">
+      <p class="eyebrow label">We hope you'll join us</p>
+      <h2 class="sect-title">Kindly respond</h2>
+      <a class="btn" href="#">RSVP</a>
+    </div></section>
+
+    <footer>Gabrielle &amp; Ernesto · March 13, 2027 · Lagos de Moreno, Mexico</footer>
+  </main>
+<script>
+  (function(){var s=document.getElementById('scene'),e=document.getElementById('env'),o=false;
+   var r=matchMedia('(prefers-reduced-motion: reduce)').matches;
+   function op(){if(o)return;o=true;if(r){document.body.classList.add('revealed');return;}
+     s.classList.add('open');setTimeout(function(){document.body.classList.add('revealed');},2700);}
+   e.addEventListener('click',op);e.addEventListener('keydown',function(ev){if(ev.key==='Enter'||ev.key===' '){ev.preventDefault();op();}});})();
+</script>
+</body>
+</html>
