@@ -1,0 +1,461 @@
+<!doctype html>
+<!-- Gabrielle & Ernesto · March 13, 2027 · Lagos de Moreno, Jalisco, Mexico
+     PHOTOS: drop real images into docs/images/ as couple-1.jpg (couple walking) and couple-2.jpg (hands). -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Gabrielle &amp; Ernesto · 03.13.2027</title>
+<link rel="icon" href="data:,">
+<meta property="og:title" content="Gabrielle &amp; Ernesto">
+<meta property="og:description" content="Saturday, March 13, 2027 · Lagos de Moreno, Jalisco, México">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://justalmostgreat.github.io/g-and-e-wedding/images/couple-1.jpg">
+<meta property="og:url" content="https://justalmostgreat.github.io/g-and-e-wedding/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Parisienne&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Mulish:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --burgundy:#7a1f2b;--burgundy-deep:#5f1622;--burgundy-soft:#9c4250;
+    --cream:#f8f2ec;--cream-deep:#eaddd2;--ink:#46282d;--gold:#a07f5c;
+    --rose:#c98a8a;--sage:#8a9a7b;--paper:#fdf8f3;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:"Cormorant Garamond",Georgia,serif;color:var(--ink);background:var(--cream);
+    -webkit-font-smoothing:antialiased;line-height:1.62;font-size:1.08rem}
+  ::selection{background:var(--rose);color:#fff}
+  a{color:var(--burgundy)}
+  .label{font-family:"Mulish",sans-serif;text-transform:uppercase;letter-spacing:.32em;font-weight:400;font-size:.66rem}
+  .es{display:none}
+  body.lang-es .es{display:block}
+  body.lang-es .en{display:none}
+  .sep{width:46px;height:1px;background:var(--gold);opacity:.5;margin:1rem auto}
+
+  /* ===== Envelope intro ===== */
+  .scene{position:fixed;inset:0;z-index:90;display:grid;place-items:center;
+    background:
+      radial-gradient(55% 45% at 16% 14%,rgba(201,138,138,.55),transparent 62%),
+      radial-gradient(50% 42% at 86% 18%,rgba(138,154,123,.42),transparent 62%),
+      radial-gradient(70% 55% at 82% 90%,rgba(122,31,43,.16),transparent 60%),
+      var(--cream);
+    transition:opacity 1.1s ease,visibility 1.1s}
+  body.revealed .scene{opacity:0;visibility:hidden}
+  .env{position:relative;width:min(82vw,400px);aspect-ratio:3/2;cursor:pointer;perspective:1600px}
+  .corner{position:absolute;width:120px;color:var(--sage);opacity:.8;z-index:2}
+  .corner.tl{top:-54px;left:-46px;transform:rotate(-18deg)}
+  .corner.br{bottom:-54px;right:-46px;transform:rotate(162deg)}
+  .corner.tr{top:-48px;right:-50px;transform:rotate(20deg);color:var(--rose)}
+  .env-back{position:absolute;inset:0;border-radius:8px;z-index:1;background:linear-gradient(160deg,var(--burgundy-soft),var(--burgundy-deep));box-shadow:0 28px 46px rgba(95,22,34,.26)}
+  .liner{position:absolute;inset:0;border-radius:8px;z-index:2;background:var(--cream);display:flex;justify-content:center;padding-top:7%}
+  .liner svg{width:30%;color:var(--sage);opacity:.7}
+  .card{position:absolute;left:7%;right:7%;top:4%;height:94%;z-index:3;background:var(--paper);border:1px solid var(--cream-deep);border-radius:5px;
+    overflow:hidden;display:flex;align-items:flex-start;justify-content:center;
+    transition:transform 1.2s cubic-bezier(.22,.68,.2,1) .6s,z-index 0s .6s,box-shadow .6s}
+  .scene.open .card{transform:translateY(-66%);z-index:7;box-shadow:0 30px 58px rgba(95,22,34,.3)}
+  .card-in{padding:14% 9% 0;text-align:center}
+  .card-k{font-family:"Mulish";text-transform:uppercase;letter-spacing:.34em;font-size:.56rem;color:var(--burgundy-soft);margin-bottom:.3em}
+  .card-n{font-family:"Parisienne";font-size:2.3rem;color:var(--burgundy);line-height:1}
+  .front{position:absolute;inset:0;border-radius:8px;z-index:4;background:linear-gradient(150deg,var(--burgundy-soft),var(--burgundy));clip-path:polygon(0 0,50% 50%,100% 0,100% 100%,0 100%)}
+  .flap{position:absolute;top:0;left:0;right:0;height:50%;z-index:5;transform-origin:top center;background:linear-gradient(180deg,var(--burgundy),var(--burgundy-deep));clip-path:polygon(0 0,100% 0,50% 100%);backface-visibility:hidden;transition:transform .9s cubic-bezier(.5,.06,.28,1),z-index 0s .85s}
+  .scene.open .flap{transform:rotateX(180deg);z-index:1}
+  .seal{position:absolute;top:50%;left:50%;width:60px;height:60px;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle at 38% 30%,var(--rose),var(--burgundy));box-shadow:0 6px 14px rgba(95,22,34,.32);z-index:6;display:grid;place-items:center;color:#fbeef0;font-family:"Parisienne";font-size:1.5rem;transition:opacity .35s,transform .5s}
+  .scene.open .seal{opacity:0;transform:translate(-50%,-50%) scale(.55)}
+  .prompt{position:absolute;bottom:11%;font-family:"Mulish";text-transform:uppercase;letter-spacing:.38em;font-size:.66rem;color:var(--burgundy-soft);opacity:.8;animation:pulse 2.6s ease-in-out infinite}
+  .scene.open .prompt{opacity:0;transition:opacity .3s}
+  @keyframes pulse{50%{opacity:.32}}
+  .skip{position:fixed;top:18px;right:22px;z-index:95;font-family:"Mulish";letter-spacing:.2em;text-transform:uppercase;font-size:.6rem;color:var(--burgundy-soft);background:rgba(248,242,236,.8);border:none;border-radius:20px;padding:8px 14px;cursor:pointer}
+  body.revealed .skip{display:none}
+
+  /* ===== Nav ===== */
+  .nav{position:fixed;top:0;left:0;right:0;z-index:60;display:flex;align-items:center;justify-content:space-between;
+    padding:14px 26px;background:rgba(248,242,236,.86);backdrop-filter:blur(8px);border-bottom:1px solid var(--cream-deep);
+    opacity:0;transform:translateY(-100%);transition:opacity .6s ease .5s,transform .6s ease .5s}
+  body.revealed .nav{opacity:1;transform:none}
+  .nav .brand{font-family:"Parisienne";font-size:1.5rem;color:var(--burgundy);text-decoration:none}
+  .nav .links{display:flex;gap:22px;align-items:center}
+  .nav .links a{font-family:"Mulish";text-transform:uppercase;letter-spacing:.18em;font-size:.64rem;color:var(--ink);text-decoration:none;transition:color .2s}
+  .nav .links a:hover{color:var(--burgundy)}
+  .nav .rsvp-btn{background:var(--burgundy);color:#fff;padding:9px 20px;border-radius:30px}
+  .nav .rsvp-btn:hover{background:var(--burgundy-soft);color:#fff}
+  .langtoggle{font-family:"Mulish";font-size:.62rem;letter-spacing:.1em;border:1px solid var(--cream-deep);border-radius:20px;overflow:hidden;display:inline-flex}
+  .langtoggle button{border:none;background:none;padding:7px 11px;cursor:pointer;color:var(--burgundy-soft);font:inherit}
+  .langtoggle button.on{background:var(--burgundy);color:#fff}
+  .menu-btn{display:none;background:none;border:none;cursor:pointer;color:var(--burgundy);font-size:1.4rem}
+  @media(max-width:860px){
+    .nav .links{position:fixed;top:54px;right:0;left:0;flex-direction:column;background:var(--cream);padding:16px 26px 24px;
+      border-bottom:1px solid var(--cream-deep);gap:16px;align-items:flex-start;display:none}
+    .nav .links.show{display:flex}
+    .menu-btn{display:block}
+  }
+
+  /* ===== Layout ===== */
+  .wrap{max-width:980px;margin:0 auto;padding:0 26px}
+  .narrow{max-width:760px}
+  section{padding:84px 0;position:relative}
+  section:nth-of-type(even){background:linear-gradient(180deg,transparent,rgba(201,138,138,.05),transparent)}
+  .eyebrow{color:var(--burgundy-soft);text-align:center;margin-bottom:.5rem}
+  .sect-title{font-family:"Parisienne";font-size:clamp(2.6rem,7vw,4rem);text-align:center;color:var(--burgundy);margin-bottom:.4rem;font-weight:400;line-height:1}
+  .sect-sub{text-align:center;color:#8a6a6f;font-style:italic;margin-bottom:2.6rem}
+
+  /* Hero */
+  .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+    padding:130px 24px 70px;position:relative;overflow:hidden}
+  .hero .bloom{position:absolute;width:300px;color:var(--rose);opacity:.45;pointer-events:none}
+  .hero .bloom.a{top:6%;left:-60px;transform:rotate(-14deg);color:var(--sage)}
+  .hero .bloom.b{bottom:2%;right:-70px;transform:rotate(166deg)}
+  .hero .kick{color:var(--burgundy-soft);margin-bottom:1.2rem}
+  .hero h1{font-family:"Parisienne";font-weight:400;color:var(--burgundy);font-size:clamp(3.6rem,13vw,8rem);line-height:.9}
+  .hero .date{font-family:"Cormorant Garamond";font-size:1.3rem;letter-spacing:.16em;margin-top:1.2rem;color:var(--ink);text-transform:uppercase}
+  .hero .place{color:#7a565b;font-style:italic;margin-top:.4rem}
+  .hero-photo{margin:2.4rem auto 0;width:min(86vw,520px);aspect-ratio:16/10;border-radius:6px;overflow:hidden;
+    background:linear-gradient(135deg,#e7d3cf,#d8c6bf);box-shadow:0 24px 50px rgba(95,22,34,.22);border:5px solid #fff;position:relative}
+  .hero-photo img{width:100%;height:100%;object-fit:cover;display:block}
+  .hero-photo .ph{position:absolute;inset:0;display:grid;place-items:center;color:#b08d8d;font-family:"Mulish";letter-spacing:.2em;text-transform:uppercase;font-size:.62rem;text-align:center;padding:20px}
+
+  /* Countdown */
+  .countdown{display:flex;justify-content:center;gap:26px;margin-top:2rem;flex-wrap:wrap}
+  .cd{text-align:center}
+  .cd b{display:block;font-family:"Cormorant Garamond";font-weight:500;font-size:2.4rem;color:var(--burgundy)}
+  .cd span{font-family:"Mulish";text-transform:uppercase;letter-spacing:.2em;font-size:.58rem;color:#8a6a6f}
+
+  /* Schedule */
+  .event{display:grid;grid-template-columns:200px 1fr;gap:30px;padding:34px 0;border-top:1px solid var(--cream-deep)}
+  .event:first-of-type{border-top:none}
+  .event .time{font-family:"Parisienne";font-size:2rem;color:var(--burgundy);line-height:1.1}
+  .event .time small{display:block;font-family:"Mulish";text-transform:uppercase;letter-spacing:.16em;font-size:.6rem;color:#8a6a6f;margin-top:.4rem}
+  .event h3{font-family:"Cormorant Garamond";font-weight:600;font-size:1.7rem;color:var(--ink);margin-bottom:.2rem}
+  .event .venue{font-style:italic;color:var(--burgundy-soft);margin-bottom:.1rem}
+  .event .addr{font-size:.96rem;color:#7a565b;margin-bottom:.2rem}
+  .event .attire{font-family:"Mulish";text-transform:uppercase;letter-spacing:.14em;font-size:.58rem;color:var(--sage);margin-bottom:.9rem}
+  .event p{margin-bottom:.7rem;max-width:60ch}
+  .event .es{color:#6a4a4f;font-style:italic;font-size:.98rem}
+  .chips{display:flex;gap:10px;flex-wrap:wrap;margin-top:.4rem}
+  .chip{font-family:"Mulish";text-transform:uppercase;letter-spacing:.12em;font-size:.58rem;color:var(--burgundy);
+    border:1px solid var(--rose);border-radius:30px;padding:8px 16px;text-decoration:none;transition:.25s;background:#fff}
+  .chip:hover{background:var(--burgundy);color:#fff;border-color:var(--burgundy)}
+
+  /* Cards / lists */
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin-top:1rem}
+  .ccard{background:var(--paper);border:1px solid var(--cream-deep);border-radius:8px;padding:26px;transition:.25s}
+  .ccard:hover{transform:translateY(-4px);box-shadow:0 16px 34px rgba(95,22,34,.12)}
+  .ccard h3{font-family:"Cormorant Garamond";font-weight:600;font-size:1.35rem;color:var(--burgundy);margin-bottom:.4rem}
+  .ccard .addr{font-size:.94rem;color:#7a565b;margin-bottom:.8rem}
+  .ccard a.map{font-family:"Mulish";text-transform:uppercase;letter-spacing:.12em;font-size:.56rem;color:var(--burgundy-soft);text-decoration:none;border-bottom:1px solid var(--rose);padding-bottom:2px}
+  .block{margin:0 auto 1.6rem;max-width:70ch}
+  .block h3{font-family:"Cormorant Garamond";font-weight:600;font-size:1.5rem;color:var(--burgundy);margin-bottom:.3rem}
+  .block p{margin-bottom:.5rem}
+  .block .es{color:#6a4a4f;font-style:italic;font-size:1rem}
+  .mapframe{width:100%;height:360px;border:0;border-radius:8px;margin-top:1.4rem;filter:saturate(.9)}
+
+  /* FAQ */
+  details{border-bottom:1px solid var(--cream-deep);padding:6px 0}
+  summary{font-family:"Cormorant Garamond";font-weight:600;font-size:1.3rem;color:var(--ink);cursor:pointer;padding:16px 30px 16px 4px;list-style:none;position:relative}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"+";position:absolute;right:6px;top:14px;color:var(--burgundy-soft);font-size:1.4rem;transition:.2s}
+  details[open] summary::after{transform:rotate(45deg)}
+  details .ans{padding:0 4px 18px}
+  details .ans p{margin-bottom:.5rem}
+  details .ans .es{color:#6a4a4f;font-style:italic;font-size:1rem}
+
+  /* RSVP / contact */
+  .rsvp-sec{text-align:center}
+  .btn{display:inline-block;font-family:"Mulish";text-transform:uppercase;letter-spacing:.24em;font-size:.74rem;color:#fff;
+    background:var(--burgundy);padding:18px 50px;border-radius:32px;text-decoration:none;transition:.3s;border:1px solid var(--burgundy)}
+  .btn:hover{background:transparent;color:var(--burgundy)}
+  .contact{margin-top:2rem;color:#7a565b}
+  .contact a{font-weight:500}
+  footer{text-align:center;padding:60px 24px 80px;background:linear-gradient(180deg,transparent,rgba(122,31,43,.06));
+    color:#9a7a7f;font-family:"Mulish";letter-spacing:.18em;text-transform:uppercase;font-size:.62rem}
+  footer .fn{font-family:"Parisienne";font-size:2.4rem;color:var(--burgundy);text-transform:none;letter-spacing:0;margin-bottom:.6rem}
+
+  @media(max-width:680px){.event{grid-template-columns:1fr;gap:10px}.event .time{font-size:1.7rem}}
+  @media (prefers-reduced-motion:reduce){.flap,.card,.scene,.seal{transition:none!important}}
+</style>
+</head>
+<body class="lang-en">
+  <svg width="0" height="0" style="position:absolute">
+    <symbol id="sprig" viewBox="0 0 60 92"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+      <path d="M30 90C30 62 30 40 30 8"/><path d="M30 72C16 68 10 57 10 45c14 2 20 12 20 24"/><path d="M30 60C44 56 50 45 50 33c-14 2-20 12-20 24"/>
+      <path d="M30 46C18 42 13 32 13 21c12 2 17 11 17 22"/><path d="M30 32C42 29 47 20 47 10c-11 2-17 10-17 20"/></g></symbol>
+    <symbol id="bloom" viewBox="0 0 200 200"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+      <path d="M100 180C100 120 100 80 100 30"/><path d="M100 150C60 140 40 110 40 78c40 6 56 38 60 70"/><path d="M100 130C140 120 160 92 160 60c-40 6-56 38-60 68"/>
+      <path d="M100 104C66 96 50 70 50 44c34 6 47 32 50 58"/><circle cx="100" cy="40" r="14"/><circle cx="74" cy="58" r="9"/><circle cx="128" cy="62" r="9"/></g></symbol>
+  </svg>
+
+  <!-- ENVELOPE INTRO -->
+  <button class="skip" onclick="document.body.classList.add('revealed')">Skip</button>
+  <div class="scene" id="scene">
+    <svg class="corner tl"><use href="#sprig"/></svg>
+    <svg class="corner tr" width="120" height="120"><use href="#bloom"/></svg>
+    <svg class="corner br"><use href="#sprig"/></svg>
+    <div class="env" id="env" role="button" tabindex="0" aria-label="Open the invitation">
+      <div class="env-back"></div>
+      <div class="liner"><svg><use href="#sprig"/></svg></div>
+      <div class="card"><div class="card-in"><p class="card-k">You're Invited</p><p class="card-n">Gabrielle &amp; Ernesto</p></div></div>
+      <div class="front"></div><div class="flap"></div><div class="seal">G</div>
+    </div>
+    <p class="prompt">Click to open</p>
+  </div>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <a href="#home" class="brand">G &amp; E</a>
+    <button class="menu-btn" aria-label="Menu" onclick="document.getElementById('navlinks').classList.toggle('show')">☰</button>
+    <div class="links" id="navlinks">
+      <a href="#schedule"><span class="en">Schedule</span><span class="es">Itinerario</span></a>
+      <a href="#travel"><span class="en">Travel</span><span class="es">Viaje</span></a>
+      <a href="#stay"><span class="en">Stay</span><span class="es">Hospedaje</span></a>
+      <a href="#todo"><span class="en">Things to Do</span><span class="es">Qué Hacer</span></a>
+      <a href="#faq"><span class="en">FAQ</span><span class="es">Preguntas</span></a>
+      <span class="langtoggle"><button id="b-en" class="on" onclick="setLang('en')">EN</button><button id="b-es" onclick="setLang('es')">ES</button></span>
+      <a href="#rsvp" class="rsvp-btn">RSVP</a>
+    </div>
+  </nav>
+
+  <main>
+    <!-- HERO -->
+    <header class="hero" id="home">
+      <svg class="bloom a" viewBox="0 0 200 200"><use href="#bloom"/></svg>
+      <svg class="bloom b" viewBox="0 0 200 200"><use href="#bloom"/></svg>
+      <p class="kick label"><span class="en">Together with their families</span><span class="es">Junto con sus familias</span></p>
+      <h1>Gabrielle &amp; Ernesto</h1>
+      <p class="date">Saturday · March 13, 2027</p>
+      <p class="place">Lagos de Moreno, Jalisco · México</p>
+      <div class="hero-photo">
+        <img src="images/couple-1.jpg" alt="Gabrielle and Ernesto" onerror="this.style.display='none'">
+        <div class="ph">Your photo · couple-1.jpg</div>
+      </div>
+      <div class="countdown" id="countdown"></div>
+    </header>
+
+    <!-- SCHEDULE -->
+    <section id="schedule"><div class="wrap">
+      <p class="eyebrow label"><span class="en">Saturday, March 13, 2027</span><span class="es">Sábado, 13 de Marzo, 2027</span></p>
+      <h2 class="sect-title"><span class="en">Schedule</span><span class="es">Itinerario</span></h2>
+      <div class="sep"></div>
+
+      <div class="event">
+        <div class="time">3:00 PM<small><span class="en">Mass</span><span class="es">Misa</span></small></div>
+        <div>
+          <h3><span class="en">Mass</span><span class="es">Misa</span></h3>
+          <p class="venue">Santuario de la Virgen de Guadalupe</p>
+          <p class="addr">C. Constituyentes, Centro, 47400 Lagos de Moreno, Jal., México</p>
+          <p class="attire"><span class="en">Cocktail / Formal Attire</span><span class="es">Vestimenta Cóctel / Formal</span></p>
+          <p class="en">Join us as we begin our wedding day with a Catholic mass celebrating our marriage. We are honored to have your presence in this significant and sacred moment with us.</p>
+          <p class="es">Acompáñennos mientras damos inicio a nuestro día especial con una Misa Católica para celebrar nuestro matrimonio. Nos honra contar con su presencia y compartir con ustedes este momento tan significativo y sagrado.</p>
+          <div class="chips">
+            <a class="chip" target="_blank" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Mass%20%E2%80%94%20Gabrielle%20%26%20Ernesto&dates=20270313T150000/20270313T170000&ctz=America/Mexico_City&location=Santuario%20de%20la%20Virgen%20de%20Guadalupe%2C%20Lagos%20de%20Moreno%2C%20Jal.%2C%20Mexico"><span class="en">+ Calendar</span><span class="es">+ Calendario</span></a>
+            <a class="chip" href="#stay"><span class="en">Where to Stay</span><span class="es">Hospedaje</span></a>
+            <a class="chip" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Santuario%20de%20la%20Virgen%20de%20Guadalupe%2C%20Lagos%20de%20Moreno%2C%20Jalisco%2C%20Mexico"><span class="en">Directions</span><span class="es">Cómo Llegar</span></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="event">
+        <div class="time">5:00 PM<small>– 6:30 PM</small></div>
+        <div>
+          <h3><span class="en">Cocktail Hour</span><span class="es">Hora del Cóctel</span></h3>
+          <p class="venue">Hacienda Ex El Castillo</p>
+          <p class="addr">México 45, 47527 Lagunillas, Jalisco, México</p>
+          <p class="attire"><span class="en">Cocktail / Formal</span><span class="es">Cóctel / Formal</span></p>
+          <p class="en">After the mass, please join us for cocktail hour! Enjoy the open bar, take a few pictures and mingle. The dinner portion of the reception will follow.</p>
+          <p class="es">Después de la misa, acompáñennos a disfrutar de nuestra Hora del Cóctel. Disfruten de la barra libre, tómense algunas fotos y convivan con familiares y amigos. La cena y recepción comenzarán al finalizar.</p>
+          <div class="chips">
+            <a class="chip" target="_blank" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Cocktail%20Hour%20%E2%80%94%20Gabrielle%20%26%20Ernesto&dates=20270313T170000/20270313T183000&ctz=America/Mexico_City&location=Hacienda%20Ex%20El%20Castillo%2C%20Lagunillas%2C%20Jalisco%2C%20Mexico"><span class="en">+ Calendar</span><span class="es">+ Calendario</span></a>
+            <a class="chip" href="#stay"><span class="en">Where to Stay</span><span class="es">Hospedaje</span></a>
+            <a class="chip" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Hacienda%20Ex%20El%20Castillo%2C%20Lagunillas%2C%20Jalisco%2C%20Mexico"><span class="en">Directions</span><span class="es">Cómo Llegar</span></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="event">
+        <div class="time">6:30 PM<small><span class="en">until late</span><span class="es">hasta tarde</span></small></div>
+        <div>
+          <h3><span class="en">Dinner &amp; Reception</span><span class="es">Cena y Recepción</span></h3>
+          <p class="venue">Hacienda Ex El Castillo</p>
+          <p class="addr">México 45, Lagunillas, México</p>
+          <p class="attire"><span class="en">Cocktail / Formal Attire</span><span class="es">Vestimenta Cóctel / Formal</span></p>
+          <p class="en">Join us for dinner as we gather with family and friends to celebrate our wedding! After the dinner portion, the dance floor will be available for everyone all night long.</p>
+          <p class="es">Acompáñennos a disfrutar de la cena mientras celebramos nuestra boda junto a familiares y amigos. Después de la cena, la pista de baile estará abierta para que todos disfruten y celebren toda la noche.</p>
+          <div class="chips">
+            <a class="chip" target="_blank" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Dinner%20%26%20Reception%20%E2%80%94%20Gabrielle%20%26%20Ernesto&dates=20270313T183000/20270314T015900&ctz=America/Mexico_City&location=Hacienda%20Ex%20El%20Castillo%2C%20Lagunillas%2C%20Mexico"><span class="en">+ Calendar</span><span class="es">+ Calendario</span></a>
+            <a class="chip" href="#stay"><span class="en">Where to Stay</span><span class="es">Hospedaje</span></a>
+            <a class="chip" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Hacienda%20Ex%20El%20Castillo%2C%20Lagunillas%2C%20Jalisco%2C%20Mexico"><span class="en">Directions</span><span class="es">Cómo Llegar</span></a>
+          </div>
+        </div>
+      </div>
+    </div></section>
+
+    <!-- TRAVEL -->
+    <section id="travel"><div class="wrap narrow">
+      <p class="eyebrow label"><span class="en">Getting Here</span><span class="es">Cómo Llegar</span></p>
+      <h2 class="sect-title"><span class="en">Travel</span><span class="es">Viaje</span></h2>
+      <div class="sep"></div>
+      <div class="block">
+        <h3><span class="en">Getting In</span><span class="es">Llegada</span></h3>
+        <p class="en">We recommend flying into Guanajuato International Airport (BJX).</p>
+        <p class="es">Recomendamos volar al Aeropuerto Internacional de Guanajuato (BJX).</p>
+      </div>
+      <div class="block">
+        <h3><span class="en">Getting to Lagos de Moreno</span><span class="es">Cómo Llegar a Lagos de Moreno</span></h3>
+        <p class="en">There are lots of ways to get into town! Several car rental options are available, and Uber and Lyft are also available at the airport.</p>
+        <p class="es">¡Hay muchas maneras de llegar al pueblo! Hay varias opciones para rentar carros, y Uber y Lyft están disponibles desde el aeropuerto.</p>
+      </div>
+      <iframe class="mapframe" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        src="https://maps.google.com/maps?q=Lagos%20de%20Moreno%2C%20Jalisco%2C%20Mexico&z=13&output=embed"></iframe>
+    </div></section>
+
+    <!-- STAY -->
+    <section id="stay"><div class="wrap narrow">
+      <p class="eyebrow label"><span class="en">Accommodations</span><span class="es">Hospedaje</span></p>
+      <h2 class="sect-title"><span class="en">Where to Stay</span><span class="es">Dónde Hospedarse</span></h2>
+      <div class="sep"></div>
+      <div class="block" style="text-align:center">
+        <p class="en">Here are our favorite nearby hotels. We'd love for everyone to stay close, so grab your spot before rooms fill up! Airbnb is also available.</p>
+        <p class="es">Aquí están nuestros hoteles favoritos. Nos encantaría que todos se hospedaran cerca, ¡así que reserven su habitación antes de que se agoten! Airbnb también está disponible.</p>
+        <p style="margin-top:1rem;font-style:italic;color:#8a6a6f"><span class="en">Hotel list coming soon.</span><span class="es">Lista de hoteles próximamente.</span></p>
+        <div class="chips" style="justify-content:center;margin-top:1rem">
+          <a class="chip" target="_blank" href="https://www.google.com/maps/search/?api=1&query=hotels%20in%20Lagos%20de%20Moreno%2C%20Jalisco%2C%20Mexico"><span class="en">Hotels Map</span><span class="es">Mapa de Hoteles</span></a>
+          <a class="chip" target="_blank" href="https://www.airbnb.com/s/Lagos-de-Moreno--Jalisco--Mexico/homes">Airbnb</a>
+        </div>
+      </div>
+    </div></section>
+
+    <!-- RESTAURANTS -->
+    <section id="eat"><div class="wrap">
+      <p class="eyebrow label"><span class="en">A Few Local Favorites</span><span class="es">Algunos Favoritos Locales</span></p>
+      <h2 class="sect-title"><span class="en">Our Favorite Restaurants</span><span class="es">Nuestros Restaurantes Favoritos</span></h2>
+      <div class="sep"></div>
+      <div class="cards">
+        <div class="ccard"><h3>Casa Lagos Santa Elena</h3><p class="addr">Elena de Troya, Santa Elena, 47480 Lagos de Moreno, Jal.</p><a class="map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Casa%20Lagos%20Santa%20Elena%2C%20Lagos%20de%20Moreno">Map →</a></div>
+        <div class="ccard"><h3>La Rinconada</h3><p class="addr">C. Constituyentes 425, Centro, 47400 Lagos de Moreno, Jal.</p><a class="map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=La%20Rinconada%2C%20Constituyentes%20425%2C%20Lagos%20de%20Moreno">Map →</a></div>
+        <div class="ccard"><h3>Mariscos El Gordo</h3><p class="addr">Margarito González Rubio 1028, El Refugio, 47400 Lagos de Moreno, Jal.</p><a class="map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Mariscos%20El%20Gordo%2C%20Lagos%20de%20Moreno">Map →</a></div>
+        <div class="ccard"><h3>Panadería y Pastelería Rotteti</h3><p class="addr">C. 16 de Septiembre 280, Centro, 47400 Lagos de Moreno, Jal.</p><a class="map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Panaderia%20Rotteti%2C%2016%20de%20Septiembre%20280%2C%20Lagos%20de%20Moreno">Map →</a></div>
+        <div class="ccard"><h3>Desayunos El Jalisciense</h3><p class="addr">C. Miguel Hidalgo y Costilla 725, Centro, 47400 Lagos de Moreno, Jal.</p><a class="map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Desayunos%20El%20Jalisciense%2C%20Lagos%20de%20Moreno">Map →</a></div>
+      </div>
+    </div></section>
+
+    <!-- THINGS TO DO -->
+    <section id="todo"><div class="wrap narrow">
+      <p class="eyebrow label"><span class="en">Explore</span><span class="es">Explora</span></p>
+      <h2 class="sect-title"><span class="en">Things to Do</span><span class="es">Qué Hacer</span></h2>
+      <div class="sep"></div>
+      <div class="block">
+        <h3>Lagos de Moreno</h3>
+        <p class="en">Walk around the beautiful historic downtown — known for colonial architecture, churches, gardens and cafés. The town is a <em>Pueblo Mágico</em> for its cultural richness. The Jardín de los Constituyentes is the heart of the city, filled with cafés, restaurants and the Parroquia Cathedral. Templo del Calvario is a beautiful church with a view of the whole town — be sure to try the nuns' famous tamales.</p>
+        <p class="es">Caminen por el hermoso centro histórico, conocido por su arquitectura colonial, iglesias, jardines y cafés. El pueblo es considerado un <em>Pueblo Mágico</em> por su riqueza cultural. El Jardín de los Constituyentes es el corazón de la ciudad, lleno de cafés, restaurantes y la Parroquia Catedral. El Templo del Calvario es una hermosa iglesia con vista a todo el pueblo. ¡No olviden probar los famosos tamales de las monjas!</p>
+      </div>
+      <div class="block">
+        <h3>León <span style="font-weight:400;color:#8a6a6f;font-style:italic;font-size:1rem">· 1 hr</span></h3>
+        <p class="en">A short hour's drive away, filled with shopping, restaurants and leather goods. Zona Piel is the place for everything leather — boots, bags and belts! Spend a few hours seeing the local vendors. For a modern atmosphere with trendy restaurants and rooftop bars, visit the Poliforum and Campestre area.</p>
+        <p class="es">A aproximadamente una hora, llena de tiendas, restaurantes y artículos de piel. Zona Piel es el lugar ideal para todo tipo de artículos de cuero — botas, bolsas y cinturones. Pasen unas horas conociendo a los vendedores locales. Para un ambiente más moderno con restaurantes de moda y bares en terrazas, visiten la zona de Poliforum y Campestre.</p>
+      </div>
+      <div class="block">
+        <h3>San Juan de los Lagos <span style="font-weight:400;color:#8a6a6f;font-style:italic;font-size:1rem">· 30 min</span></h3>
+        <p class="en">Known for its beautiful basilica, markets and rich history. Visit the Basílica de San Juan, walk through the historic center and explore the surrounding street vendors. Remember to try their flautas and caramel candies!</p>
+        <p class="es">Conocido por su hermosa basílica, mercados y rica historia. Visiten la Basílica de San Juan, caminen por el centro histórico y recorran los puestos de vendedores alrededor. ¡No olviden sus flautas y dulces de leche!</p>
+      </div>
+      <div class="block">
+        <h3><span class="en">Extend Your Stay</span><span class="es">Extiende Tu Estancia</span></h3>
+        <p class="en">For guests extending their stay, several beautiful cities within driving distance make great weekend trips. We recommend tequila tours in Tequila, Jalisco (be sure to have a designated driver!). San Miguel de Allende is famous for its rich art galleries, cobblestone streets and colonial architecture. Guanajuato City is famous for its colorful buildings, underground tunnels and lively atmosphere — you'll recognize the similarities to the movie <em>Coco</em>!</p>
+        <p class="es">Para los invitados que extiendan su estancia, hay varias ciudades hermosas a poca distancia en carro, perfectas para viajes de fin de semana. Recomendamos tours de tequila en Tequila, Jalisco (¡asegúrense de tener un conductor designado!). San Miguel de Allende es conocido por sus galerías de arte, calles empedradas y hermosa arquitectura colonial. La ciudad de Guanajuato es famosa por sus edificios coloridos, túneles subterráneos y ambiente animado. ¡Reconocerán las similitudes con la película <em>Coco</em>!</p>
+      </div>
+    </div></section>
+
+    <!-- FAQ -->
+    <section id="faq"><div class="wrap narrow">
+      <p class="eyebrow label"><span class="en">Good to Know</span><span class="es">Información Útil</span></p>
+      <h2 class="sect-title"><span class="en">FAQ</span><span class="es">Preguntas Frecuentes</span></h2>
+      <div class="sep"></div>
+
+      <details><summary><span class="en">When is the RSVP deadline?</span><span class="es">¿Cuál es la fecha límite para confirmar?</span></summary>
+        <div class="ans"><p class="en">Please RSVP by <em>(date to be confirmed)</em> so we can have an accurate headcount.</p>
+        <p class="es">Por favor confirmen su asistencia antes del <em>(fecha por confirmar)</em> para que podamos tener un conteo preciso de invitados.</p></div></details>
+
+      <details><summary><span class="en">Can I bring a date?</span><span class="es">¿Puedo llevar acompañante?</span></summary>
+        <div class="ans"><p class="en">Please check your invite for your +1.</p><p class="es">Por favor revisa tu invitación para confirmar si tienes +1.</p></div></details>
+
+      <details><summary><span class="en">Are kids welcome?</span><span class="es">¿Son bienvenidos los niños?</span></summary>
+        <div class="ans"><p class="en">As much as we love your little ones, we will not be including them in the mass or reception.</p>
+        <p class="es">Aunque queremos mucho a sus pequeños, no estarán incluidos en la misa ni en la recepción.</p></div></details>
+
+      <details><summary><span class="en">What will the weather be like?</span><span class="es">¿Cómo estará el clima?</span></summary>
+        <div class="ans"><p class="en">The weather will be in the 70s–80s °F during the day, and 50s–60s °F at night.</p>
+        <p class="es">Durante el día, el clima estará entre los 70 y 80 °F, y por la noche entre los 50 y 60 °F.</p></div></details>
+
+      <details><summary><span class="en">Where should I park?</span><span class="es">¿Dónde puedo estacionarme?</span></summary>
+        <div class="ans"><p class="en">There is limited street parking at the church; there are also multiple cash-only parking lots in the area. We recommend walking to the church from your hotel. There will be valet parking at the reception. Shuttles will leave the church at 5 PM to take some guests to the reception. If you miss the shuttle, we recommend a taxi (found in the center of town). Uber/Lyft are not accessible within the town.</p>
+        <p class="es">Habrá estacionamiento limitado en la calle cerca de la iglesia; también hay varios estacionamientos de pago (solo efectivo) en la zona. Recomendamos caminar a la iglesia desde su hotel. Habrá valet parking en la recepción. Tendremos transporte saliendo de la iglesia a las 5 PM para llevar a algunos invitados a la recepción. Si no alcanzan el transporte, recomendamos tomar un taxi (se encuentran en el centro). Uber y Lyft no están disponibles en la zona.</p></div></details>
+
+      <details><summary><span class="en">What should I wear?</span><span class="es">¿Qué debo vestir?</span></summary>
+        <div class="ans"><p class="en">Both the mass and reception are cocktail/formal attire. Please dress respectfully during the mass.</p>
+        <p class="es">Tanto la misa como la recepción serán vestimenta cóctel/formal. Les pedimos vestir de manera respetuosa durante la misa.</p></div></details>
+
+      <details><summary><span class="en">Is the wedding indoors or outdoors?</span><span class="es">¿La boda es en interior o al aire libre?</span></summary>
+        <div class="ans"><p class="en">The mass will be indoors; however, the church does not have air conditioning. The reception will be outdoors.</p>
+        <p class="es">La misa será en interior; sin embargo, la iglesia no cuenta con aire acondicionado. La recepción será al aire libre.</p></div></details>
+
+      <details><summary><span class="en">What kind of shoes should I wear?</span><span class="es">¿Qué tipo de zapatos debo usar?</span></summary>
+        <div class="ans"><p class="en">The church has wood flooring, so any shoes are welcome. We recommend chunky-heeled or flat shoes for the reception, as there will be grass areas.</p>
+        <p class="es">La iglesia tiene piso de madera, así que cualquier tipo de zapato está bien. Recomendamos usar tacones anchos o zapatos planos para la recepción, ya que habrá áreas con pasto.</p></div></details>
+
+      <details><summary><span class="en">Can I take pictures during the wedding?</span><span class="es">¿Puedo tomar fotos durante la boda?</span></summary>
+        <div class="ans"><p class="en">Please refrain from taking photos or videos during the mass. During the reception, photos and videos are welcome!</p>
+        <p class="es">Les pedimos amablemente que se abstengan de tomar fotos y videos durante la misa. ¡Durante la recepción, las fotos y videos son bienvenidos!</p></div></details>
+
+      <details><summary><span class="en">Whom should I call with questions?</span><span class="es">¿A quién puedo contactar con preguntas?</span></summary>
+        <div class="ans"><p class="en">Please contact the groom, <strong>Ernesto Jonathan Orozco</strong>, at <a href="tel:+16824077959">682-407-7959</a>, or the mother of the groom, <strong>Fabiola Orozco</strong>, at <a href="tel:+16823657457">682-365-7457</a>.</p>
+        <p class="es">Por favor contacten al novio, <strong>Ernesto Jonathan Orozco</strong>, al <a href="tel:+16824077959">682-407-7959</a>, o a la madre del novio, <strong>Fabiola Orozco</strong>, al <a href="tel:+16823657457">682-365-7457</a>.</p></div></details>
+    </div></section>
+
+    <!-- RSVP -->
+    <section id="rsvp" class="rsvp-sec"><div class="wrap narrow">
+      <p class="eyebrow label"><span class="en">We hope you'll join us</span><span class="es">Esperamos contar con ustedes</span></p>
+      <h2 class="sect-title"><span class="en">Kindly Respond</span><span class="es">Confirmar Asistencia</span></h2>
+      <div class="sep"></div>
+      <p class="en" style="margin-bottom:1.6rem;color:#7a565b">Please let us know if you can celebrate with us.</p>
+      <p class="es" style="margin-bottom:1.6rem;color:#7a565b">Por favor avísennos si pueden acompañarnos a celebrar.</p>
+      <a class="btn" href="#" id="rsvp-link">RSVP</a>
+      <p class="contact"><span class="en">Questions? Call Ernesto at </span><span class="es">¿Preguntas? Llamen a Ernesto al </span><a href="tel:+16824077959">682-407-7959</a>.</p>
+    </div></section>
+  </main>
+
+  <footer>
+    <div class="fn">Gabrielle &amp; Ernesto</div>
+    March 13, 2027 · Lagos de Moreno, Jalisco · México
+  </footer>
+
+<script>
+  // Envelope intro
+  (function(){var s=document.getElementById('scene'),e=document.getElementById('env'),o=false;
+   var r=matchMedia('(prefers-reduced-motion: reduce)').matches;
+   function op(){if(o)return;o=true;if(r){document.body.classList.add('revealed');return;}
+     s.classList.add('open');setTimeout(function(){document.body.classList.add('revealed');},2800);}
+   e.addEventListener('click',op);e.addEventListener('keydown',function(ev){if(ev.key==='Enter'||ev.key===' '){ev.preventDefault();op();}});})();
+
+  // Language toggle
+  function setLang(l){document.body.classList.toggle('lang-es',l==='es');document.body.classList.toggle('lang-en',l==='en');
+    document.documentElement.lang=l;document.getElementById('b-en').classList.toggle('on',l==='en');
+    document.getElementById('b-es').classList.toggle('on',l==='es');}
+
+  // Close mobile menu on click
+  document.querySelectorAll('#navlinks a').forEach(function(a){a.addEventListener('click',function(){document.getElementById('navlinks').classList.remove('show');});});
+
+  // Countdown to March 13, 2027 (local)
+  (function(){var target=new Date(2027,2,13,15,0,0);
+   var labels={en:['Days','Hours','Minutes'],es:['Días','Horas','Minutos']};
+   function tick(){var now=new Date(),d=Math.max(0,target-now);
+     var days=Math.floor(d/864e5),hrs=Math.floor(d%864e5/36e5),min=Math.floor(d%36e5/6e4);
+     var es=document.body.classList.contains('lang-es'),L=es?labels.es:labels.en;
+     document.getElementById('countdown').innerHTML=
+       '<div class="cd"><b>'+days+'</b><span>'+L[0]+'</span></div>'+
+       '<div class="cd"><b>'+hrs+'</b><span>'+L[1]+'</span></div>'+
+       '<div class="cd"><b>'+min+'</b><span>'+L[2]+'</span></div>';}
+   tick();setInterval(tick,60000);})();
+</script>
+</body>
+</html>
