@@ -1,20 +1,24 @@
-# Gabrielle & Ernesto — Wedding Site
+# Gabrielle & Ernesto, Wedding Site
 
-Live invitation site. Published with GitHub Pages.
+Live invitation site, published with GitHub Pages:
+https://justalmostgreat.github.io/g-and-e-wedding/
 
-## Add the photos
-Drop the real photos into `images/` with these exact names (the site already points to them):
+## Structure
+- `index.html` : the main site (envelope intro, our story, schedule, travel, stay, things to do, FAQ). Bilingual EN/ES.
+- `designs/` : five clickable design directions to choose from.
+- `images/` : optimized photos (hero, portrait, embrace, night, ring).
 
-- `images/couple-1.jpg` — the couple walking (used in the hero + link preview)
-- `images/couple-2.jpg` — the hands / engagement close-up
-
-Until they're added, those spots show a soft floral placeholder. After adding, commit & push:
+## Editing
+Everything lives in `index.html` (single file). To update:
 
 ```
-git add images && git commit -m "Add photos" && git push
+git add -A && git commit -m "your message" && git push
 ```
 
-## Edit content
-Everything lives in `index.html` (single file). Names are real; the **RSVP link** and the
-**RSVP deadline date** are placeholders to fill in. Site is bilingual (EN/ES toggle in the nav)
-and set to `noindex` so it won't show up in Google searches.
+GitHub Pages redeploys automatically in about a minute.
+
+## Still to fill in
+- RSVP button destination (a WithJoy link or a Google Form).
+- RSVP deadline date (currently shows "date to be confirmed").
+
+The page is set to `noindex`, so it will not appear in search engines.
