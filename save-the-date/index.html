@@ -94,6 +94,22 @@
   .site-btn:hover{background:var(--olive-deep)}
   body.phase-done .site-btn{opacity:1;pointer-events:auto;transform:translateX(-50%) translateY(0)}
 
+  @media (max-width:768px){
+    /* card grows to fit its text instead of clipping a fixed 5:7 box */
+    .card{width:min(82vw,320px);aspect-ratio:auto;height:auto}
+    .card-in{position:static;padding:38px 28px 34px}
+    .std{margin-bottom:.55em}
+    .names{font-size:clamp(1.85rem,8.6vw,2.4rem);margin:.3em 0 .32em}
+    .div{margin:.5em 0 .7em}
+    .place{margin-top:.6em}
+    .follow{margin-top:1.05em}
+    /* keep the card clear of the button */
+    body.phase-done .card{top:45%}
+    /* wide, single-line, comfortably padded button */
+    .site-btn{width:92%;max-width:360px;padding:17px 16px;letter-spacing:.1em;font-size:.68rem;line-height:1.55}
+  }
+  @media (max-width:768px) and (max-height:720px){ .names{font-size:clamp(1.7rem,8vw,2.1rem)} .card-in{padding:30px 24px 28px} }
+
   @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 </style>
 </head>
