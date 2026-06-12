@@ -79,8 +79,8 @@
   .nav .links{display:flex;gap:22px;align-items:center}
   .nav .links a{font-family:"Mulish";text-transform:uppercase;letter-spacing:.18em;font-size:.64rem;color:var(--ink);text-decoration:none;transition:color .2s}
   .nav .links a:hover{color:var(--burgundy)}
-  .nav .rsvp-btn{background:var(--burgundy);color:#fff;padding:9px 20px;border-radius:30px}
-  .nav .rsvp-btn:hover{background:var(--burgundy-soft);color:#fff}
+  .nav .links a.rsvp-btn{background:var(--burgundy);color:#fff;padding:9px 20px;border-radius:30px}
+  .nav .links a.rsvp-btn:hover{background:var(--burgundy-soft);color:#fff}
   .langtoggle{font-family:"Mulish";font-size:.62rem;letter-spacing:.1em;border:1px solid var(--cream-deep);border-radius:20px;overflow:hidden;display:inline-flex}
   .langtoggle button{border:none;background:none;padding:7px 11px;cursor:pointer;color:var(--burgundy-soft);font:inherit}
   .langtoggle button.on{background:var(--burgundy);color:#fff}
@@ -217,6 +217,7 @@
       <a href="#stay"><span class="en">Stay</span><span class="es">Hospedaje</span></a>
       <a href="#todo"><span class="en">Things to Do</span><span class="es">Qué Hacer</span></a>
       <a href="#faq"><span class="en">FAQ</span><span class="es">Preguntas</span></a>
+      <a href="#registry"><span class="en">Registry</span><span class="es">Regalos</span></a>
       <span class="langtoggle"><button id="b-en" class="on" onclick="setLang('en')">EN</button><button id="b-es" onclick="setLang('es')">ES</button></span>
       <a href="#rsvp" class="rsvp-btn">RSVP</a>
     </div>
@@ -428,6 +429,22 @@
       <details><summary><span class="en">Whom should I call with questions?</span><span class="es">¿A quién puedo contactar con preguntas?</span></summary>
         <div class="ans"><p class="en">Please contact the groom, <strong>Ernesto Jonathan Orozco</strong>, at <a href="tel:+16824077959">682-407-7959</a>, or the mother of the groom, <strong>Fabiola Orozco</strong>, at <a href="tel:+16823657457">682-365-7457</a>.</p>
         <p class="es">Por favor contacten al novio, <strong>Ernesto Jonathan Orozco</strong>, al <a href="tel:+16824077959">682-407-7959</a>, o a la madre del novio, <strong>Fabiola Orozco</strong>, al <a href="tel:+16823657457">682-365-7457</a>.</p></div></details>
+    </div></section>
+
+    <!-- REGISTRY -->
+    <section id="registry"><div class="wrap narrow">
+      <p class="eyebrow label"><span class="en">With Gratitude</span><span class="es">Con Gratitud</span></p>
+      <h2 class="sect-title"><span class="en">Registry</span><span class="es">Mesa de Regalos</span></h2>
+      <div class="sep"></div>
+      <div class="block" style="text-align:center">
+        <p class="en">Your presence at our wedding is truly the greatest gift we could ask for. We are so grateful that you are traveling near and far to celebrate this special day with us. For those who have asked, we have registered at the stores linked below. While gifts are never expected, we sincerely appreciate your love, support, and generosity as we begin this next chapter together.</p>
+        <p class="es">Su presencia en nuestra boda es verdaderamente el mejor regalo que podríamos pedir. Estamos muy agradecidos de que viajen desde cerca y lejos para celebrar este día tan especial con nosotros. Para quienes han preguntado, estamos registrados en las tiendas enlazadas a continuación. Aunque los regalos nunca son esperados, apreciamos sinceramente su amor, apoyo y generosidad al comenzar juntos este nuevo capítulo.</p>
+        <p style="margin-top:1rem;font-style:italic;color:#8a6a6f"><span class="en">Registry links coming soon.</span><span class="es">Enlaces de mesa de regalos próximamente.</span></p>
+        <!-- Add registry links here, e.g.:
+        <div class="chips" style="justify-content:center;margin-top:1rem">
+          <a class="chip" target="_blank" href="STORE_URL">Store Name</a>
+        </div> -->
+      </div>
     </div></section>
 
     <!-- RSVP -->
