@@ -48,10 +48,17 @@
     background:#f5eee0; /* matches the envelope art's cream paper so the splash is seamless */
     transition:opacity 1.1s ease,visibility 1.1s}
   body.revealed .scene{opacity:0;visibility:hidden}
-  .env-img{position:absolute;max-width:min(94vw,560px);max-height:92vh;object-fit:contain;
-    filter:drop-shadow(0 22px 42px rgba(76,70,40,.22));transition:opacity 1s ease}
-  .env-sealed{z-index:2;opacity:1}
-  .env-open{z-index:1;opacity:0}
+  .scene{--ws:min(90vw,470px,80vh)}
+  .env-img{position:absolute;left:50%;top:53%;height:auto;transition:opacity .8s ease;
+    /* feather the cream margins so the image edge dissolves into the scene (no rectangle) */
+    -webkit-mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent),linear-gradient(180deg,transparent,#000 4%,#000 96%,transparent);
+    -webkit-mask-composite:source-in;
+    mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent),linear-gradient(180deg,transparent,#000 4%,#000 96%,transparent);
+    mask-composite:intersect}
+  /* Both envelopes are pinned by the wax seal to the same screen point and matched in scale, so the
+     cross-fade reads as ONE envelope opening in place. No drop-shadow -> the cream blends into the scene. */
+  .env-sealed{z-index:2;opacity:1;width:var(--ws);transform:translate(-50%,-50%) translate(0,calc(var(--ws) * -0.214))}
+  .env-open{z-index:1;opacity:0;width:calc(var(--ws) / 1.48);transform:translate(-50%,-50%) translate(calc(var(--ws) * 0.023),calc(var(--ws) * -0.0559))}
   .scene.open .env-sealed{opacity:0}
   .scene.open .env-open{opacity:1}
   .skip{position:fixed;top:18px;right:22px;z-index:95;font-family:"Mulish";letter-spacing:.2em;text-transform:uppercase;font-size:.6rem;color:var(--burgundy-soft);background:rgba(248,242,236,.8);border:none;border-radius:20px;padding:8px 14px;cursor:pointer}
