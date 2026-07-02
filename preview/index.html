@@ -57,10 +57,25 @@
     mask-composite:intersect}
   /* Both envelopes are pinned by the wax seal to the same screen point and matched in scale, so the
      cross-fade reads as ONE envelope opening in place. No drop-shadow -> the cream blends into the scene. */
-  .env-sealed{z-index:2;opacity:1;width:var(--ws);transform:translate(-50%,-50%) translate(0,calc(var(--ws) * -0.214))}
+  .env-sealed{z-index:4;opacity:1;width:var(--ws);transform:translate(-50%,-50%) translate(0,calc(var(--ws) * -0.214))}
   .env-open{z-index:1;opacity:0;width:calc(var(--ws) / 1.48);transform:translate(-50%,-50%) translate(calc(var(--ws) * 0.023),calc(var(--ws) * -0.0559))}
-  .scene.open .env-sealed{opacity:0}
+  /* second copy of the open art, clipped to the front pocket, so the card rises from INSIDE the envelope */
+  .env-open-front{z-index:3;clip-path:polygon(0 50%,50% 66%,100% 50%,100% 101%,0 101%)}
+  .scene.open .env-sealed{opacity:0;pointer-events:none}
   .scene.open .env-open{opacity:1}
+  /* the invitation card that slides out of the pocket */
+  .inv-card{position:absolute;left:50%;top:53%;z-index:2;width:calc(var(--ws) * .46);aspect-ratio:5/6;
+    background:linear-gradient(170deg,#fdf9f1,#f8f0e2);border:1px solid #e8dcC2;border-radius:calc(var(--ws)*.012);
+    box-shadow:0 14px 34px rgba(96,78,36,.18);opacity:0;
+    transform:translate(-50%,-50%) translate(calc(var(--ws) * .023),calc(var(--ws) * .10)) scale(.5);
+    transition:transform 1.25s cubic-bezier(.2,.72,.16,1),opacity .4s ease .15s}
+  .inv-card::after{content:"";position:absolute;inset:calc(var(--ws)*.016);border:1px solid rgba(111,125,73,.4);border-radius:calc(var(--ws)*.006);pointer-events:none}
+  .scene.open .inv-card{opacity:1}
+  .scene.out .inv-card{transform:translate(-50%,-50%) translate(calc(var(--ws) * .023),calc(var(--ws) * -.33)) scale(1)}
+  .inv-card-in{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:8% 10%}
+  .ic-k{font-family:"Mulish";text-transform:uppercase;letter-spacing:.3em;font-size:calc(var(--ws)*.0165);color:var(--env-green-deep);margin-bottom:.9em}
+  .ic-n{font-family:"Parisienne";font-size:calc(var(--ws)*.062);color:var(--burgundy);line-height:1.05}
+  .ic-d{font-family:"Cormorant Garamond";font-weight:600;letter-spacing:.28em;text-indent:.28em;font-size:calc(var(--ws)*.026);color:var(--seal-gold);margin-top:1.1em}
   .skip{position:fixed;top:18px;right:22px;z-index:95;font-family:"Mulish";letter-spacing:.2em;text-transform:uppercase;font-size:.6rem;color:var(--burgundy-soft);background:rgba(248,242,236,.8);border:none;border-radius:20px;padding:8px 14px;cursor:pointer}
   body.revealed .skip{display:none}
   .preview-badge{position:fixed;left:14px;bottom:14px;z-index:96;font-family:"Mulish";font-weight:500;font-size:.56rem;letter-spacing:.14em;text-transform:uppercase;
@@ -201,8 +216,14 @@
   <!-- ENVELOPE INTRO (real art: sealed image cross-fades to open image) -->
   <button class="skip" onclick="document.body.classList.add('revealed')">Skip</button>
   <div class="scene" id="scene" role="button" tabindex="0" aria-label="Open the invitation">
-    <img class="env-img env-sealed" src="../images/envelope-sealed.jpg" alt="You're invited — tap to open the envelope">
     <img class="env-img env-open" src="../images/envelope-open.jpg" alt="" aria-hidden="true">
+    <div class="inv-card" aria-hidden="true"><div class="inv-card-in">
+      <p class="ic-k"><span class="en">Together with their families</span><span class="es">Junto con sus familias</span></p>
+      <p class="ic-n">Gabrielle<br>&amp; Ernesto</p>
+      <p class="ic-d">03 · 13 · 2027</p>
+    </div></div>
+    <img class="env-img env-open env-open-front" src="../images/envelope-open.jpg" alt="" aria-hidden="true">
+    <img class="env-img env-sealed" src="../images/envelope-sealed.jpg" alt="You're invited — tap to open the envelope">
   </div>
 
   <!-- NAV -->
@@ -468,7 +489,9 @@
   (function(){var s=document.getElementById('scene'),o=false;
    var r=matchMedia('(prefers-reduced-motion: reduce)').matches;
    function op(){if(o)return;o=true;if(r){document.body.classList.add('revealed');return;}
-     s.classList.add('open');setTimeout(function(){document.body.classList.add('revealed');},1800);}
+     s.classList.add('open');                                          // flap opens (cross-fade)
+     setTimeout(function(){s.classList.add('out');},650);              // card slides out of the pocket
+     setTimeout(function(){document.body.classList.add('revealed');},3300);} // then reveal the site
    s.addEventListener('click',op);s.addEventListener('keydown',function(ev){if(ev.key==='Enter'||ev.key===' '){ev.preventDefault();op();}});})();
 
   // Language toggle
