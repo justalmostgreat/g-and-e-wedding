@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Gabrielle &amp; Ernesto · Reserva la Fecha</title>
+<link rel="icon" href="data:,">
+<meta name="theme-color" content="#f8e8cf">
+<meta property="og:title" content="Gabrielle &amp; Ernesto · Reserva la Fecha">
+<meta property="og:description" content="Abre para revelar">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://justalmostgreat.github.io/g-and-e-wedding/images/save-og.jpg">
+<meta property="og:image:width" content="941">
+<meta property="og:image:height" content="494">
+<meta property="og:url" content="https://justalmostgreat.github.io/g-and-e-wedding/save-the-date/">
+<meta name="twitter:card" content="summary_large_image">
+<style>
+  *{box-sizing:border-box;margin:0}
+  html,body{height:100%}
+  body{background:#f8e8cf;overflow:hidden;-webkit-tap-highlight-color:transparent}
+
+  /* The stage is the art's own 941x1672 canvas scaled to fit the screen; every position below is % of that canvas. */
+  .stage{--u:min(100vw / 941, 100vh / 1672);position:fixed;inset:0;margin:auto;
+    width:calc(941*var(--u));height:calc(1672*var(--u));cursor:pointer;outline:none;touch-action:manipulation}
+  @supports (height:100svh){.stage{--u:min(100vw / 941, 100svh / 1672)}}
+  .stage img{position:absolute;left:0;top:0;width:100%;height:100%;
+    user-select:none;-webkit-user-select:none;-webkit-user-drag:none}
+
+  /* Layers, back to front: open envelope | card | envelope pocket (same art, clipped) | sealed envelope */
+  .back{z-index:1}
+  .front{z-index:3;clip-path:polygon(0 42.05%,6.06% 42.05%,33.48% 54.72%,44.85% 59.33%,47.29% 58.55%,49.73% 58.31%,
+    52.18% 58.55%,54.62% 59.33%,67.06% 54.72%,93.94% 42.05%,100% 42.05%,100% 100%,0 100%)}
+  /* nudged so its seal and envelope sit on the open art's, so the crossfade reads as opening in place */
+  .sealed{z-index:4;transform-origin:49.95% 60.53%;transform:translate(-.21%,1.97%) scale(.97);transition:opacity .7s ease}
+  .stage .card{z-index:2;left:3.24%;top:13.16%;width:93.52%;height:73.68%;border-radius:calc(12*var(--u));
+    box-shadow:0 calc(16*var(--u)) calc(44*var(--u)) rgba(92,38,20,.3);transform:translateY(19.07%) scale(.5455)}
+
+  .ring{position:absolute;z-index:5;left:49.73%;top:62.5%;width:16%;aspect-ratio:1;border-radius:50%;
+    border:2px solid rgba(140,22,32,.6);pointer-events:none;animation:ring 2.4s ease-out infinite}
+  @keyframes ring{0%{opacity:.9;transform:translate(-50%,-50%) scale(.85)}75%,100%{opacity:0;transform:translate(-50%,-50%) scale(1.6)}}
+
+  .open{cursor:default}
+  .open .ring{display:none}
+  .open .sealed{opacity:0;pointer-events:none}
+  /* card slides up out of the pocket, then (clear of it, so the z-index swap is invisible) comes forward to full size */
+  .open .card{animation:pull 2.5s cubic-bezier(.45,0,.25,1) .9s both}
+  @keyframes pull{
+    51.9%{z-index:2}
+    52%{z-index:5;transform:translateY(-32.47%) scale(.5455);animation-timing-function:cubic-bezier(.3,0,.15,1)}
+    100%{z-index:5;transform:none}
+  }
+  .open .back,.open .front{animation:drop 2.5s cubic-bezier(.45,0,.25,1) .9s both}
+  @keyframes drop{
+    52%{transform:translateY(5.38%);opacity:1;animation-timing-function:cubic-bezier(.4,0,.7,1)}
+    100%{transform:translateY(17.94%);opacity:0}
+  }
+
+  /* feather the art's edges into the page colour: no seam at the letterbox or around the nudged sealed layer */
+  .back,.front,.sealed{
+    -webkit-mask-image:linear-gradient(90deg,#0000,#000 5%,#000 95%,#0000),linear-gradient(#0000,#000 3%,#000 97%,#0000);-webkit-mask-composite:source-in;
+    mask-image:linear-gradient(90deg,#0000,#000 5%,#000 95%,#0000),linear-gradient(#0000,#000 3%,#000 97%,#0000);mask-composite:intersect}
+  @media (prefers-reduced-motion:reduce){
+    .ring{animation:none;opacity:0}
+    .open .card{animation:none;transform:none;z-index:5}
+    .open .back,.open .front{animation:none;opacity:0}
+  }
+
+  .draft{position:fixed;left:12px;bottom:12px;z-index:9;pointer-events:none;font:500 10px/1.45 system-ui,sans-serif;
+    letter-spacing:.12em;text-transform:uppercase;background:rgba(122,31,43,.92);color:#fff;padding:7px 12px;border-radius:20px}
+</style>
+</head>
+<body>
+  <main class="stage" id="stage" role="button" tabindex="0" aria-label="Abrir el sobre · Open the envelope">
+    <img class="back" src="../../images/save-open.webp" alt="">
+    <img class="card" src="../../images/save-card.webp" alt="Reserva la Fecha: Gabrielle y Ernesto, 5 de junio de 2027, Lagos de Moreno, Jalisco, México">
+    <img class="front" src="../../images/save-open.webp" alt="">
+    <img class="sealed" src="../../images/save-sealed.webp" alt="Reserva la Fecha. Abre para revelar." fetchpriority="high">
+    <span class="ring"></span>
+  </main>
+  <p class="draft">Preview · draft, not the final link yet</p>
+
+<script>
+  (function(){
+    var s=document.getElementById('stage');
+    function go(){
+      s.classList.add('open');
+      // once open it is just a picture, so let screen readers reach the card's alt text
+      s.removeAttribute('role'); s.removeAttribute('aria-label'); s.removeAttribute('tabindex');
+    }
+    function open(){
+      // an early tap waits for all the art (window load) so it never animates half-loaded images.
+      // ponytail: not img.decode(), which can hang forever when the page isn't painting
+      if(document.readyState==='complete') go(); else addEventListener('load',go);
+    }
+    s.addEventListener('click',open);
+    s.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); open(); } });
+  })();
+</script>
+</body>
+</html>
