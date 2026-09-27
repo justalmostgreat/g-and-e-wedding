@@ -85,7 +85,7 @@
     var s=document.getElementById('stage');
     // ?card=1..5 / p1..p5 swaps in a lettering option from ../options/ or ../pintado/
     var v=/[?&]card=(p?)([1-5])(&|$)/.exec(location.search);
-    if(v){ s.querySelector('.card').src='../../images/save-card-'+(v[1]||'v')+v[2]+'.webp';
+    if(v){ s.querySelector('.card').src='../../images/save-card-'+(v[1]||'v')+v[2]+'.webp'+(v[1]?'?v=2':'');
       document.querySelector('.draft').textContent+=v[1]?' · Pintado '+'ABCDE'[v[2]-1]:' · lettering option '+v[2]; }
     function go(){
       s.classList.add('open');
