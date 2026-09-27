@@ -83,6 +83,9 @@
 <script>
   (function(){
     var s=document.getElementById('stage');
+    // ?card=1..5 swaps in one of the lettering options from ../options/
+    var v=/[?&]card=([1-5])(&|$)/.exec(location.search);
+    if(v){ s.querySelector('.card').src='../../images/save-card-v'+v[1]+'.webp'; document.querySelector('.draft').textContent+=' · lettering option '+v[1]; }
     function go(){
       s.classList.add('open');
       // once open it is just a picture, so let screen readers reach the card's alt text
