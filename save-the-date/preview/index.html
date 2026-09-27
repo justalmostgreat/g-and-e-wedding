@@ -83,9 +83,10 @@
 <script>
   (function(){
     var s=document.getElementById('stage');
-    // ?card=1..5 swaps in one of the lettering options from ../options/
-    var v=/[?&]card=([1-5])(&|$)/.exec(location.search);
-    if(v){ s.querySelector('.card').src='../../images/save-card-v'+v[1]+'.webp'; document.querySelector('.draft').textContent+=' · lettering option '+v[1]; }
+    // ?card=1..5 / p1..p5 swaps in a lettering option from ../options/ or ../pintado/
+    var v=/[?&]card=(p?)([1-5])(&|$)/.exec(location.search);
+    if(v){ s.querySelector('.card').src='../../images/save-card-'+(v[1]||'v')+v[2]+'.webp';
+      document.querySelector('.draft').textContent+=v[1]?' · Pintado '+'ABCDE'[v[2]-1]:' · lettering option '+v[2]; }
     function go(){
       s.classList.add('open');
       // once open it is just a picture, so let screen readers reach the card's alt text
