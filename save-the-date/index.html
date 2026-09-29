@@ -1,156 +1,97 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>Gabrielle & Ernesto · Save the Date</title>
+<title>Gabrielle &amp; Ernesto · Reserva la Fecha</title>
 <link rel="icon" href="data:,">
-<meta property="og:title" content="Gabrielle & Ernesto · Save the Date">
-<meta property="og:description" content="March 13, 2027 · Lagos de Moreno, Jalisco, México">
+<meta name="theme-color" content="#f8e8cf">
+<meta property="og:title" content="Gabrielle &amp; Ernesto · Reserva la Fecha">
+<meta property="og:description" content="Abre para revelar">
 <meta property="og:type" content="website">
-<meta property="og:image" content="https://justalmostgreat.github.io/g-and-e-wedding/images/std-front.jpg">
+<meta property="og:image" content="https://justalmostgreat.github.io/g-and-e-wedding/images/save-og.jpg">
+<meta property="og:image:width" content="941">
+<meta property="og:image:height" content="494">
 <meta property="og:url" content="https://justalmostgreat.github.io/g-and-e-wedding/save-the-date/">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --cream:#efe1c2; --cream-page:#ece0c4; --paper:#f6edd7; --paper-edge:#e6d8b6;
-    --olive:#5f6b3a; --olive-deep:#4c5530; --olive-liner:#7d8a52;
-    --burgundy:#9c2740; --pink:#d6446b; --ink:#43401f;
-  }
-  *{box-sizing:border-box;margin:0;padding:0}
+  *{box-sizing:border-box;margin:0}
   html,body{height:100%}
-  body{font-family:"Cormorant Garamond",Georgia,serif;color:var(--ink);background:var(--cream-page);
-    -webkit-font-smoothing:antialiased;overflow:hidden;transition:background 1.1s ease}
-  /* cream surround stays the whole sequence so the open frame never flashes white */
-  .stage{position:fixed;inset:0;display:grid;place-items:center;perspective:1600px}
+  body{background:#f8e8cf;overflow:hidden;-webkit-tap-highlight-color:transparent}
 
-  /* Envelope box (all faces are 3:2, same as the source images) */
-  .env{position:relative;width:min(92vw,560px);aspect-ratio:3/2;perspective:1600px;background:var(--cream-page);border-radius:7px}
-  .env img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:7px;
-    box-shadow:0 30px 60px rgba(70,55,20,.22)}
+  /* The stage is the art's own 941x1672 canvas scaled to fit the screen; every position below is % of that canvas. */
+  .stage{--u:min(100vw / 941, 100vh / 1672);position:fixed;inset:0;margin:auto;
+    width:calc(941*var(--u));height:calc(1672*var(--u));cursor:pointer;outline:none;touch-action:manipulation}
+  @supports (height:100svh){.stage{--u:min(100vw / 941, 100svh / 1672)}}
+  .stage img{position:absolute;left:0;top:0;width:100%;height:100%;
+    user-select:none;-webkit-user-select:none;-webkit-user-drag:none}
 
-  /* Flip intro: front <-> sealed */
-  .flip{position:absolute;inset:0;transform-style:preserve-3d;z-index:5;
-    transition:transform 1.05s cubic-bezier(.5,.05,.3,1),opacity .55s ease}
-  .flip .face{backface-visibility:hidden}
-  .flip .back{transform:rotateY(180deg)}
-  body.phase-sealed .flip,body.phase-open .flip,body.phase-done .flip{transform:rotateY(180deg)}
-  body.phase-open .flip,body.phase-done .flip{opacity:0;pointer-events:none}
+  /* Layers, back to front: open envelope | card | envelope pocket (same art, clipped) | sealed envelope */
+  .back{z-index:1}
+  .front{z-index:3;clip-path:polygon(0 42.05%,6.06% 42.05%,33.48% 54.72%,44.85% 59.33%,47.29% 58.55%,49.73% 58.31%,
+    52.18% 58.55%,54.62% 59.33%,67.06% 54.72%,93.94% 42.05%,100% 42.05%,100% 100%,0 100%)}
+  /* nudged so its seal and envelope sit on the open art's, so the crossfade reads as opening in place */
+  .sealed{z-index:4;transform-origin:49.95% 60.53%;transform:translate(-.21%,1.97%) scale(.97);transition:opacity .7s ease}
+  .stage .card{z-index:2;left:3.24%;top:13.16%;width:93.52%;height:73.68%;border-radius:calc(12*var(--u));
+    box-shadow:0 calc(16*var(--u)) calc(44*var(--u)) rgba(92,38,20,.3);transform:translateY(19.07%) scale(.5455)}
 
-  /* Open state layers */
-  .open-back,.open-front{opacity:0;transition:opacity .6s ease;mix-blend-mode:darken}
-  .open-front{clip-path:polygon(0 49%,50% 70%,100% 49%,100% 101%,0 101%)}
-  body.phase-open .open-back,body.phase-done .open-back{opacity:1}
-  body.phase-open .open-front,body.phase-done .open-front{opacity:1}
-  .open-back{z-index:1}
-  .open-front{z-index:3}
-  body.phase-done .open-back,body.phase-done .open-front{opacity:0;transition:opacity .8s ease .15s}
+  .ring{position:absolute;z-index:5;left:49.73%;top:62.5%;width:16%;aspect-ratio:1;border-radius:50%;
+    border:2px solid rgba(140,22,32,.6);pointer-events:none;animation:ring 2.4s ease-out infinite}
+  @keyframes ring{0%{opacity:.9;transform:translate(-50%,-50%) scale(.85)}75%,100%{opacity:0;transform:translate(-50%,-50%) scale(1.6)}}
 
-  /* The save-the-date card that pulls out */
-  .card{position:absolute;left:50%;top:47%;z-index:2;width:62%;aspect-ratio:5/7;border-radius:6px;
-    background:linear-gradient(170deg,#f8f0db,var(--paper));border:1px solid var(--paper-edge);
-    box-shadow:0 24px 48px rgba(70,55,20,.28);opacity:0;
-    transform:translate(-50%,-50%) translateY(34%) scale(.34);transform-origin:center;
-    transition:transform 1.15s cubic-bezier(.2,.72,.16,1),opacity .5s ease}
-  .card::after{content:"";position:absolute;inset:7px;border:1px solid rgba(95,107,58,.35);border-radius:3px;pointer-events:none}
-  body.phase-open .card{opacity:1;transform:translate(-50%,-50%) translateY(-26%) scale(.95);z-index:6}
-  body.phase-done .card{opacity:1;top:50%;transform:translate(-50%,-50%) scale(1);z-index:6}
-
-  .card-in{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;
-    text-align:center;padding:9% 11%}
-  .std{font-family:"Cormorant Garamond";text-transform:uppercase;letter-spacing:.5em;font-size:clamp(.5rem,1.6vw,.72rem);
-    color:var(--olive);margin-bottom:.2em}
-  .std small{display:block;letter-spacing:.42em;font-size:.82em;color:var(--olive-liner);margin-top:.5em}
-  .names{font-family:"Pinyon Script";font-weight:400;color:var(--olive);line-height:.95;
-    font-size:clamp(2rem,7.4vw,3.1rem);margin:.34em 0 .28em}
-  .div{display:flex;align-items:center;justify-content:center;gap:9px;color:var(--olive);margin:.2em 0 .5em}
-  .div .lau{width:clamp(34px,11vw,52px);height:auto}
-  .div .heart{width:clamp(9px,2.6vw,13px);height:auto;color:var(--pink)}
-  .date{font-family:"Cormorant Garamond";text-transform:uppercase;letter-spacing:.26em;font-weight:600;
-    font-size:clamp(.84rem,2.7vw,1.18rem);color:var(--ink)}
-  .place{font-family:"Cormorant Garamond";text-transform:uppercase;letter-spacing:.2em;
-    font-size:clamp(.52rem,1.7vw,.74rem);color:#6f6a44;margin-top:.5em}
-  .follow{font-style:italic;color:var(--burgundy);font-size:clamp(.78rem,2.3vw,1rem);margin-top:1.1em;opacity:.9}
-
-  /* Prompt + seal attention */
-  .hint{position:absolute;bottom:8%;left:0;right:0;text-align:center;font-family:"Cormorant Garamond";
-    text-transform:uppercase;letter-spacing:.34em;font-size:.74rem;color:var(--olive);opacity:0;transition:opacity .6s ease}
-  body.phase-sealed .hint{opacity:.85;animation:pulse 2.4s ease-in-out infinite}
-  @keyframes pulse{50%{opacity:.4}}
-  .seal-ring{position:absolute;left:50%;top:75.5%;width:14%;aspect-ratio:1;transform:translate(-50%,-50%);
-    border-radius:50%;z-index:6;opacity:0;pointer-events:none;border:2px solid var(--burgundy)}
-  body.phase-sealed .seal-ring{animation:ring 2.2s ease-out infinite}
-  @keyframes ring{0%{opacity:.5;transform:translate(-50%,-50%) scale(.8)}70%{opacity:0;transform:translate(-50%,-50%) scale(1.5)}100%{opacity:0}}
-
-  @media (max-width:768px){
-    /* card grows to fit its text instead of clipping a fixed 5:7 box */
-    .card{width:min(82vw,320px);aspect-ratio:auto;height:auto}
-    .card-in{position:static;padding:38px 28px 34px}
-    .std{margin-bottom:.55em}
-    .names{font-size:clamp(1.85rem,8.6vw,2.4rem);margin:.3em 0 .32em}
-    .div{margin:.5em 0 .7em}
-    .place{margin-top:.6em}
-    .follow{margin-top:1.05em}
+  .open{cursor:default}
+  .open .ring{display:none}
+  .open .sealed{opacity:0;pointer-events:none}
+  /* card slides up out of the pocket, then (clear of it, so the z-index swap is invisible) comes forward to full size */
+  .open .card{animation:pull 2.5s cubic-bezier(.45,0,.25,1) .9s both}
+  @keyframes pull{
+    51.9%{z-index:2}
+    52%{z-index:5;transform:translateY(-32.47%) scale(.5455);animation-timing-function:cubic-bezier(.3,0,.15,1)}
+    100%{z-index:5;transform:none}
   }
-  @media (max-width:768px) and (max-height:720px){ .names{font-size:clamp(1.7rem,8vw,2.1rem)} .card-in{padding:30px 24px 28px} }
+  .open .back,.open .front{animation:drop 2.5s cubic-bezier(.45,0,.25,1) .9s both}
+  @keyframes drop{
+    52%{transform:translateY(5.38%);opacity:1;animation-timing-function:cubic-bezier(.4,0,.7,1)}
+    100%{transform:translateY(17.94%);opacity:0}
+  }
 
-  @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+  /* feather the art's edges into the page colour: no seam at the letterbox or around the nudged sealed layer */
+  .back,.front,.sealed{
+    -webkit-mask-image:linear-gradient(90deg,#0000,#000 5%,#000 95%,#0000),linear-gradient(#0000,#000 3%,#000 97%,#0000);-webkit-mask-composite:source-in;
+    mask-image:linear-gradient(90deg,#0000,#000 5%,#000 95%,#0000),linear-gradient(#0000,#000 3%,#000 97%,#0000);mask-composite:intersect}
+  @media (prefers-reduced-motion:reduce){
+    .ring{animation:none;opacity:0}
+    .open .card{animation:none;transform:none;z-index:5}
+    .open .back,.open .front{animation:none;opacity:0}
+  }
+
 </style>
 </head>
-<body class="phase-front">
-  <!-- reusable laurel + heart -->
-  <svg width="0" height="0" style="position:absolute"><symbol id="laurel" viewBox="0 0 60 24">
-    <g fill="currentColor"><path d="M3 12h52" fill="none" stroke="currentColor" stroke-width="1.1"/>
-      <ellipse cx="13" cy="8.4" rx="5" ry="2.1" transform="rotate(-28 13 8.4)"/><ellipse cx="24" cy="7.6" rx="5.6" ry="2.2" transform="rotate(-26 24 7.6)"/>
-      <ellipse cx="35" cy="7.2" rx="6" ry="2.3" transform="rotate(-24 35 7.2)"/><ellipse cx="46" cy="7.8" rx="5.4" ry="2.1" transform="rotate(-22 46 7.8)"/>
-      <ellipse cx="13" cy="15.6" rx="5" ry="2.1" transform="rotate(28 13 15.6)"/><ellipse cx="24" cy="16.4" rx="5.6" ry="2.2" transform="rotate(26 24 16.4)"/>
-      <ellipse cx="35" cy="16.8" rx="6" ry="2.3" transform="rotate(24 35 16.8)"/><ellipse cx="46" cy="16.2" rx="5.4" ry="2.1" transform="rotate(22 46 16.2)"/>
-    </g></symbol>
-    <symbol id="heart" viewBox="0 0 24 22"><path fill="currentColor" d="M12 21C5 15.5 2 12 2 7.8 2 4.6 4.5 2.5 7.2 2.5c1.9 0 3.6 1.1 4.8 3 1.2-1.9 2.9-3 4.8-3C19.5 2.5 22 4.6 22 7.8 22 12 19 15.5 12 21Z"/></symbol>
-  </svg>
-
-  <div class="stage">
-    <div class="env" id="env" role="button" tabindex="0" aria-label="Open the save the date">
-      <div class="flip">
-        <img class="face front" src="../images/std-front.jpg" alt="Envelope addressed to Gabrielle and Ernesto">
-        <img class="face back" src="../images/std-sealed.jpg" alt="Sealed envelope, tap the seal">
-      </div>
-      <img class="open-back" src="../images/std-open.jpg" alt="">
-      <div class="card"><div class="card-in">
-        <p class="std">Save the Date<small>Guarda la Fecha</small></p>
-        <p class="names">Gabrielle &amp; Ernesto</p>
-        <div class="div"><svg class="lau" style="transform:scaleX(-1)"><use href="#laurel"/></svg><svg class="heart"><use href="#heart"/></svg><svg class="lau"><use href="#laurel"/></svg></div>
-        <p class="date">March 13, 2027</p>
-        <p class="place">Lagos de Moreno · Jalisco, México</p>
-        <p class="follow">Formal invitation to follow</p>
-      </div></div>
-      <img class="open-front" src="../images/std-open.jpg" alt="">
-      <div class="seal-ring"></div>
-    </div>
-    <p class="hint" id="hint">Tap the seal · Toca el sello</p>
-  </div>
+<body>
+  <main class="stage" id="stage" role="button" tabindex="0" aria-label="Abrir el sobre · Open the envelope">
+    <img class="back" src="../images/save-open.webp" alt="">
+    <img class="card" src="../images/save-card-final.webp" alt="Reserva la Fecha: Gabrielle y Ernesto, 5 de junio de 2027, Lagos de Moreno, Jalisco, México">
+    <img class="front" src="../images/save-open.webp" alt="">
+    <img class="sealed" src="../images/save-sealed.webp" alt="Reserva la Fecha. Abre para revelar." fetchpriority="high">
+    <span class="ring"></span>
+  </main>
 
 <script>
   (function(){
-    var body=document.body, env=document.getElementById('env'), opened=false;
-    var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
-    // intro: front -> flip to sealed
-    if(reduce){ body.className='phase-sealed'; }
-    else { setTimeout(function(){ if(body.classList.contains('phase-front')){ body.className='phase-sealed'; } }, 1900); }
-    function open(){
-      if(opened) return;
-      // let the flip finish if user taps super early
-      if(body.classList.contains('phase-front')) body.className='phase-sealed';
-      opened=true; body.className='phase-open';
-      if(reduce){ body.className='phase-done'; return; }
-      setTimeout(function(){ body.className='phase-done'; }, 1500);
+    var s=document.getElementById('stage');
+    function go(){
+      s.classList.add('open');
+      // once open it is just a picture, so let screen readers reach the card's alt text
+      s.removeAttribute('role'); s.removeAttribute('aria-label'); s.removeAttribute('tabindex');
     }
-    env.addEventListener('click', open);
-    env.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); open(); }});
+    function open(){
+      // an early tap waits for all the art (window load) so it never animates half-loaded images.
+      // ponytail: not img.decode(), which can hang forever when the page isn't painting
+      if(document.readyState==='complete') go(); else addEventListener('load',go);
+    }
+    s.addEventListener('click',open);
+    s.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); open(); } });
   })();
 </script>
 </body>
