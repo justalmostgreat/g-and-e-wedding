@@ -1,7 +1,7 @@
 # Gabrielle & Ernesto, Wedding Site
 
 Live invitation site, published with GitHub Pages:
-https://justalmostgreat.github.io/g-and-e-wedding/
+https://gabbyandernesto.com/
 
 ## Structure
 - `index.html` : the main site (envelope intro, our story, schedule, travel, stay, things to do, FAQ). Bilingual EN/ES.
